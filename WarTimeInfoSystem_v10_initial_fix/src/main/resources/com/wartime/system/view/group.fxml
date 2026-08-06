@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+
+<VBox styleClass="standard-root" spacing="20.0" alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wartime.system.controller.GroupController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <children>
+        <Label text="GROUP MANAGEMENT">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+
+        <HBox spacing="20.0" alignment="CENTER">
+            <VBox spacing="10.0" prefWidth="300.0">
+                <Label text="Create New Group" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtGroupName" promptText="Group Name" />
+                <ComboBox fx:id="cmbGroupType" prefWidth="300.0" promptText="Select Category" />
+                <TextField fx:id="txtCustomType" promptText="Custom Type (if Other)" visible="false" />
+                <DatePicker fx:id="dpDateCreated" prefWidth="300.0" promptText="Select Date" styleClass="combo-box" />
+                
+                <Label text="Select Members (Hold Ctrl to multiple select):" />
+                <ListView fx:id="lstUsers" prefHeight="150.0" />
+                
+                <Button fx:id="btnCreateGroup" text="CREATE GROUP" prefWidth="300.0" />
+            </VBox>
+
+            <VBox spacing="10.0" prefWidth="400.0">
+                <Label text="Existing Groups (double-click to edit)" style="-fx-font-weight: bold;"/>
+                <ListView fx:id="lstGroups" prefHeight="300.0" />
+                <Button fx:id="btnDeleteGroup" text="DELETE GROUP" prefWidth="400.0" styleClass="btn-danger" visible="false" managed="false" />
+            </VBox>
+        </HBox>
+
+        <Button fx:id="btnBack" text="BACK TO MENU" />
+    </children>
+</VBox>

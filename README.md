@@ -13,3 +13,8 @@ now it runs smoothly but I need to add more features , atleast now it runs 😊
 
 Working smoothly in both macOS and Windows 10 & 11
 
+# Facing some major crash of application 
+
+My friend on windows reported that he can not run the launcher.java , all the get is a blank white screen ... I tried to fix it , another friend on Windows 10 said , everythings works nicely but sometimes the app crashes unexpectedly
+
+<br>
