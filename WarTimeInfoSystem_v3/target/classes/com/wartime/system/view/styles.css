@@ -1,0 +1,123 @@
+/* War-Time Theme */
+.root {
+    /* Base settings */
+    -fx-font-family: "Arial";
+}
+
+.intro-root {
+    -fx-background-image: url("images/intro_bg.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+.standard-root {
+    -fx-background-image: url("images/other_bg1.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+.outro-root {
+    -fx-background-image: url("images/outro_bg.png");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+/*i modified it from white to light red/maroon for better visibility*/
+/*i modified it from maroon to light light glowing green for better visibility*/
+
+/*
+no colour is clearly visible 
+now i added shadow with SB 
+now it is visible with light colour also
+
+*/
+
+.label {
+    -fx-text-fill: #FFFFFF;     
+}
+
+
+
+.button {
+    -fx-background-color: #4a5d4a;
+    /* Military Green */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: #3e4e3e;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #5b705b;
+}
+
+.button:pressed {
+    -fx-background-color: #3e4e3e;
+}
+
+/* Global Input Styles (Default) */
+.text-field,
+.password-field,
+.text-area,
+.combo-box {
+    -fx-background-color: #3c3c3c;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #888888;
+    -fx-border-color: #555555;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+.text-field:focused,
+.password-field:focused,
+.text-area:focused,
+.combo-box:focused {
+    -fx-border-color: #7a9d7a;
+    -fx-background-color: #444444;
+}
+
+/* Transmission Interface - High Contrast Terminal Style */
+.terminal-input {
+    -fx-background-color: black;
+    -fx-control-inner-background: black;
+    /* Essential for TextArea content area */
+    -fx-text-fill: #39ff14;
+    /* Neon Green */
+    -fx-prompt-text-fill: #006400;
+    -fx-border-color: #39ff14;
+    -fx-font-family: "Monospaced";
+    /* Better for a terminal feel */
+    -fx-font-weight: bold;
+}
+
+.terminal-input:focused {
+    -fx-border-color: #00ff00;
+    -fx-background-color: #0d0d0d;
+    -fx-control-inner-background: #0d0d0d;
+    -fx-effect: dropshadow(three-pass-box, rgba(57, 255, 20, 0.4), 10, 0, 0, 0);
+}
+
+.list-view {
+    -fx-background-color: #3c3c3c;
+    -fx-control-inner-background: #3c3c3c;
+}
+
+.list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: #3c3c3c;
+}
+
+.list-cell:filled:selected:focused,
+.list-cell:filled:selected {
+    -fx-background-color: #4a5d4a;
+    -fx-text-fill: white;
+}
+
+.list-cell:even {
+    -fx-background-color: #424242;
+}
