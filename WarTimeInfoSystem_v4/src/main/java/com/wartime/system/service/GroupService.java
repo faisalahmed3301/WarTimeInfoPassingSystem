@@ -1,0 +1,69 @@
+package com.wartime.system.service;
+
+import com.wartime.system.model.AbstractUser;
+import com.wartime.system.model.Group;
+import com.wartime.system.model.GroupType;
+import com.wartime.system.model.Rank;
+import com.wartime.system.exception.UnauthorizedAccessException;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class GroupService {
+    private static GroupService instance;
+    private List<Group> groups = new ArrayList<>();
+
+    private GroupService() {
+    }
+
+    public static synchronized GroupService getInstance() {
+        if (instance == null) {
+            instance = new GroupService();
+        }
+        return instance;
+    }
+
+    public void createGroup(String name, GroupType category, String customType, AbstractUser creator,
+            List<AbstractUser> initialMembers) {
+        if (creator.getRank() == Rank.SOLDIER) {
+            throw new UnauthorizedAccessException("Soldiers cannot create groups.");
+        }
+
+        if (creator.getRank() == Rank.OFFICER) {
+            boolean commanderPresent = initialMembers.stream()
+                    .anyMatch(m -> m.getRank() == Rank.COMMANDER);
+            if (!commanderPresent) {
+                throw new UnauthorizedAccessException("Officers must add a Commander to create a group.");
+            }
+        }
+
+        Group group = new Group(name, category, customType, creator);
+        for (AbstractUser member : initialMembers) {
+            if (member != creator) {
+                group.addMember(member);
+            }
+        }
+        groups.add(group);
+    }
+
+    public List<Group> getVisibleGroups(AbstractUser user) {
+        if (user.getRank() == Rank.COMMANDER) {
+            return groups;
+        }
+        return groups.stream()
+                .filter(g -> g.isMember(user))
+                .collect(Collectors.toList());
+    }
+
+    public void deleteGroup(Group group, AbstractUser user) {
+        if (user.getRank() != Rank.COMMANDER) {
+            throw new UnauthorizedAccessException("Only Commanders can delete groups.");
+        }
+        groups.remove(group);
+    }
+
+    public List<Group> getAllGroups() {
+        return groups;
+    }
+}
