@@ -83,7 +83,7 @@ The project compiles for Java 17 and declares JavaFX 20. It also uses Apache POI
 The data path is relative to the process's current working directory. Change into the application directory before launching:
 
 ```bash
-cd /Users/faisalahmed/Desktop/WarTimeInfoPassingSystem/WarTimeInfoSystem_v11
+cd /WarTimeInfoPassingSystem/WarTimeInfoSystem_v11
 ```
 
 If the app is launched from another directory, it may create a different `data/storage/` folder there. This can look like lost users, groups, or messages even though the original files still exist.
