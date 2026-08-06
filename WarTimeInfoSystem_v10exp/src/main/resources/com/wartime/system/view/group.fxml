@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" spacing="20.0" styleClass="standard-root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wartime.system.controller.GroupController">
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+    <children>
+        <Label text="GROUP MANAGEMENT">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+
+        <HBox alignment="CENTER" spacing="20.0">
+            <VBox prefWidth="300.0" spacing="10.0">
+                <Label style="-fx-font-weight: bold;" text="Create New Group" />
+                <TextField fx:id="txtGroupName" promptText="Group Name" />
+                <ComboBox fx:id="cmbGroupType" prefWidth="300.0" promptText="Select Category" />
+                <TextField fx:id="txtCustomType" promptText="Custom Type (if Other)" visible="false" />
+                <DatePicker fx:id="dpDateCreated" prefHeight="26.0" prefWidth="300.0" promptText="Select Date" styleClass="combo-box" />
+                
+                <Label text="Select Members (Hold Ctrl to multiple select):" />
+                <ListView fx:id="lstUsers" prefHeight="150.0" />
+                
+                <Button fx:id="btnCreateGroup" prefWidth="300.0" text="CREATE GROUP" />
+            </VBox>
+
+            <VBox prefWidth="400.0" spacing="10.0">
+                <Label style="-fx-font-weight: bold;" text="Existing Groups (double-click to edit)" />
+                <ListView fx:id="lstGroups" prefHeight="300.0" />
+                <Button fx:id="btnDeleteGroup" managed="false" prefWidth="400.0" styleClass="btn-danger" text="DELETE GROUP" visible="false" />
+            </VBox>
+        </HBox>
+
+        <Button fx:id="btnBack" text="BACK TO MENU" />
+    </children>
+</VBox>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane stylesheets="@styles.css" styleClass="root" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wartime.system.controller.OptionController">
+
+    <!-- LEFT: 60px Global Navigation Rail -->
+    <left>
+        <VBox prefWidth="76.0" styleClass="nav-rail-global" alignment="TOP_CENTER" spacing="24.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="24.0" bottom="24.0" left="12.0" right="12.0"/>
+            </padding>
+            <Circle radius="18.0" fill="#201F1F" stroke="#50C878" strokeWidth="2.0"/>
+            
+            <Region VBox.vgrow="ALWAYS" />
+            
+            <Button fx:id="btnLogout" text="⏻" style="-fx-font-size: 18px;" styleClass="secondary-button" prefWidth="48.0" prefHeight="48.0" tooltip="Log Out"/>
+        </VBox>
+    </left>
+
+    <!-- CENTER: SplitPane -->
+    <center>
+        <SplitPane dividerPositions="0.3" styleClass="split-pane">
+            <!-- 280px Navigation Rail -->
+            <VBox minWidth="280.0" maxWidth="320.0" styleClass="nav-rail-sub">
+                <padding>
+                    <Insets top="24.0" bottom="24.0" left="24.0" right="24.0"/>
+                </padding>
+                <Label text="OPERATIONAL COMMAND" styleClass="label-headline"/>
+                <Label text="Select an action to proceed" styleClass="label-sub"/>
+                
+                <Region prefHeight="32.0"/>
+                
+                <VBox spacing="16.0">
+                    <Button fx:id="btnSend" text="TRANSMIT MESSAGE" styleClass="primary-button" prefWidth="Infinity"/>
+                    <Button fx:id="btnDecrypt" text="DECRYPT INBOX" styleClass="secondary-button" prefWidth="Infinity"/>
+                    <Button fx:id="btnCreateGroup" text="GROUP MANAGEMENT" styleClass="secondary-button" prefWidth="Infinity"/>
+                </VBox>
+                
+                <Region VBox.vgrow="ALWAYS" />
+                
+                <!-- Telemetry Card Simulation -->
+                <VBox styleClass="surface-card" spacing="8.0">
+                    <padding>
+                        <Insets top="16.0" bottom="16.0" left="16.0" right="16.0"/>
+                    </padding>
+                    <Label text="SYSTEM STATUS" styleClass="label-sub" />
+                    <HBox alignment="CENTER_LEFT" spacing="8.0">
+                        <Circle radius="4.0" fill="#50C878" />
+                        <Label text="SECURE CHANNEL ONLINE" styleClass="label-mono" />
+                    </HBox>
+                </VBox>
+            </VBox>
+            
+            <!-- Fluid Canvas Placeholder -->
+            <StackPane styleClass="surface-card" style="-fx-background-color: #0A0A0A; -fx-background-radius: 0;">
+                <VBox alignment="CENTER" spacing="16.0">
+                    <Label text="SELECT A DIRECTIVE" styleClass="label-headline" style="-fx-text-fill: #3E4A3F;"/>
+                    <Label text="Awaiting command input from left navigation panel." styleClass="label-mono" style="-fx-text-fill: #3E4A3F;"/>
+                </VBox>
+            </StackPane>
+        </SplitPane>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,246 @@
+/* ============================================================
+   WAR-TIME INFORMATION SYSTEM — Tactical Modern Theme
+   Obsidian & Emerald Design System
+   ============================================================ */
+
+.root {
+    -fx-font-family: "Inter", "Arial";
+    -fx-background-color: #0A0A0A; /* Deep Obsidian Base */
+    -fx-font-size: 14px;
+}
+
+/* ========================= CONTAINERS & SURFACES ========================= */
+.surface-card {
+    -fx-background-color: #121212;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    /* Soft ambient elevation */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.2, 0, 4);
+}
+
+.nav-rail-global {
+    -fx-background-color: #0E0E0E; /* Lowest elevation */
+}
+
+.nav-rail-sub {
+    -fx-background-color: #131313; /* Flush against surface */
+}
+
+.split-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+.split-pane *.split-pane-divider {
+    -fx-background-color: #201F1F;
+    -fx-padding: 0 1 0 1;
+}
+
+/* ========================= TYPOGRAPHY ========================= */
+.label-headline {
+    -fx-font-family: "Space Grotesk", "Inter", "Arial";
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #E5E2E1;
+}
+
+.label-sub {
+    -fx-font-family: "Space Grotesk", "Inter", "Arial";
+    -fx-font-weight: bold;
+    -fx-text-fill: #BDCABC;
+    -fx-font-size: 12px;
+}
+
+.label-mono {
+    -fx-font-family: "Monospaced";
+    -fx-text-fill: #6EE591;
+    -fx-font-size: 13px;
+}
+
+.text-primary {
+    -fx-text-fill: #E5E2E1;
+}
+
+/* Base javaFX label override */
+.label {
+    -fx-text-fill: #E5E2E1;
+}
+
+/* ========================= BUTTONS ========================= */
+.primary-button {
+    -fx-background-color: #50C878;
+    -fx-text-fill: #0A0A0A;
+    -fx-font-family: "Space Grotesk", "Arial";
+    -fx-font-weight: bold;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-cursor: hand;
+    -fx-padding: 12 24;
+    /* Tactical Neon Outer-Glow */
+    -fx-effect: dropshadow(gaussian, rgba(80, 200, 120, 0.5), 12, 0, 0, 0);
+}
+/* override normal button class as well */
+.button {
+    -fx-background-color: #50C878;
+    -fx-text-fill: #0A0A0A;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(80, 200, 120, 0.4), 8, 0, 0, 0);
+}
+
+.primary-button:hover, .button:hover {
+    -fx-background-color: #6EE591;
+    -fx-effect: dropshadow(gaussian, rgba(110, 229, 145, 0.8), 16, 0, 0, 0);
+}
+
+.primary-button:pressed, .button:pressed {
+    -fx-background-color: #3AA95D;
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-border-color: rgba(80, 200, 120, 0.2);
+    -fx-border-width: 1px;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-text-fill: #50C878;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+}
+
+.secondary-button:hover {
+    -fx-background-color: rgba(80, 200, 120, 0.05);
+}
+
+.danger-button {
+    -fx-background-color: #2A0E0E;
+    -fx-border-color: #E53935;
+    -fx-border-width: 1px;
+    -fx-text-fill: #E53935;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+}
+.danger-button:hover {
+    -fx-background-color: #E53935;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(229, 57, 53, 0.4), 12, 0, 0, 0);
+}
+
+/* ========================= TOGGLE BUTTONS ========================= */
+.toggle-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #BDCABC;
+    -fx-border-color: rgba(189, 202, 188, 0.2);
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 8 16;
+}
+
+.toggle-button:selected {
+    -fx-background-color: rgba(80, 200, 120, 0.15);
+    -fx-text-fill: #50C878;
+    -fx-border-color: #50C878;
+    -fx-effect: dropshadow(gaussian, rgba(80, 200, 120, 0.4), 6, 0, 0, 0);
+}
+
+/* ========================= INPUTS & TERMINAL ========================= */
+.terminal-input {
+    -fx-control-inner-background: #0E0E0E;
+    -fx-background-color: #0E0E0E;
+    -fx-text-fill: #6EE591;
+    -fx-font-family: "Monospaced";
+    -fx-prompt-text-fill: #3E4A3F;
+    
+    /* Input Fields: Active state is 2px bottom bar */
+    -fx-border-color: transparent transparent #3E4A3F transparent;
+    -fx-border-width: 0 0 2px 0;
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-padding: 10px;
+}
+
+.terminal-input:focused {
+    -fx-border-color: transparent transparent #50C878 transparent;
+    -fx-control-inner-background: #111411;
+    -fx-background-color: #111411;
+}
+
+.text-field, .password-field, .combo-box, .text-area {
+    -fx-background-color: #131313;
+    -fx-control-inner-background: #131313;
+    -fx-text-fill: #E5E2E1;
+    -fx-prompt-text-fill: #3E4A3F;
+    -fx-border-color: rgba(80, 200, 120, 0.15); /* Ghost Border */
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-padding: 8px 12px;
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: #50C878;
+}
+
+/* ComboBox dropdown */
+.combo-box .list-cell {
+    -fx-background-color: #131313;
+    -fx-text-fill: #E5E2E1;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #0E0E0E;
+    -fx-border-color: #201F1F;
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: #0E0E0E;
+    -fx-text-fill: #E5E2E1;
+}
+
+.combo-box-popup .list-cell:filled:hover {
+    -fx-background-color: #201F1F;
+    -fx-text-fill: #6EE591;
+}
+
+/* ========================= LIST VIEWS ========================= */
+.list-view {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-border-width: 0;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #E5E2E1;
+    -fx-padding: 12px 16px;
+    -fx-border-color: transparent transparent #131313 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #201F1F;
+}
+
+.list-cell:filled:selected:focused,
+.list-cell:filled:selected {
+    -fx-background-color: rgba(80, 200, 120, 0.08);
+    -fx-border-color: transparent transparent #50C878 transparent;
+}
+
+/* ========================= EFFECTS ========================= */
+.blur-overlay {
+    -fx-background-color: rgba(10, 10, 10, 0.7);
+}
+
+.scroll-bar {
+    -fx-background-color: #0E0E0E;
+}
+.scroll-bar .thumb {
+    -fx-background-color: #201F1F;
+    -fx-background-radius: 4;
+}

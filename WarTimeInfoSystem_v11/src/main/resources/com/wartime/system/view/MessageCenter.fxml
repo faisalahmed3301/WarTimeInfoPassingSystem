@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane stylesheets="@tactical_modern.css" styleClass="root" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wartime.system.controller.SenderController">
+
+    <!-- LEFT: 60px Global Navigation Rail (Persistent) -->
+    <left>
+        <VBox prefWidth="76.0" styleClass="nav-rail-global" alignment="TOP_CENTER" spacing="24.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="24.0" bottom="24.0" left="12.0" right="12.0"/>
+            </padding>
+            <Circle radius="18.0" fill="#201F1F" stroke="#50C878" strokeWidth="2.0"/>
+            <Region VBox.vgrow="ALWAYS" />
+            <Button fx:id="btnReturn" text="↩" style="-fx-font-size: 18px;" styleClass="secondary-button" prefWidth="48.0" prefHeight="48.0" tooltip="Return"/>
+        </VBox>
+    </left>
+
+    <!-- CENTER: SplitPane -->
+    <center>
+        <SplitPane dividerPositions="0.3" styleClass="split-pane">
+            
+            <!-- 280px Navigation Rail: Contacts & Groups -->
+            <VBox minWidth="280.0" maxWidth="320.0" styleClass="nav-rail-sub">
+                <padding>
+                    <Insets top="24.0" bottom="24.0" left="16.0" right="16.0"/>
+                </padding>
+                <Label text="SECURE CHANNEL" styleClass="label-headline"/>
+                <Label text="Target selection &amp; clearance" styleClass="label-sub"/>
+                
+                <Region prefHeight="24.0"/>
+                
+                <VBox spacing="16.0">
+                    <VBox spacing="6.0">
+                        <Label text="Target Group" styleClass="label-mono"/>
+                        <ComboBox fx:id="cmbGroup" prefWidth="Infinity" promptText="Select Group" styleClass="combo-box"/>
+                    </VBox>
+                    <VBox spacing="6.0">
+                        <Label text="Individual Recipient" styleClass="label-mono"/>
+                        <ComboBox fx:id="cmbRecipient" prefWidth="Infinity" promptText="Select Operative" styleClass="combo-box"/>
+                    </VBox>
+                    <VBox spacing="6.0">
+                        <Label text="Authorizing Appointment" styleClass="label-mono"/>
+                        <ComboBox fx:id="cmbAppointment" prefWidth="Infinity" promptText="Required Clearance" styleClass="combo-box"/>
+                    </VBox>
+                </VBox>
+                
+                <Region VBox.vgrow="ALWAYS" />
+                
+                <Button fx:id="btnEmergency" text="⚠ INITIATE EMERGENCY" styleClass="danger-button" prefWidth="Infinity" visible="false" managed="false" />
+            </VBox>
+            
+            <!-- Fluid Message Canvas -->
+            <VBox styleClass="surface-card" style="-fx-background-radius: 0;">
+                <padding>
+                    <Insets top="24.0" bottom="24.0" left="32.0" right="32.0"/>
+                </padding>
+                
+                <!-- Chat Area (Placeholder for actual chat history list, showing Master-Detail intent) -->
+                <VBox VBox.vgrow="ALWAYS" alignment="CENTER">
+                    <!-- Note: For a true Receiver/Sender unified file, you'd add the ListView here. 
+                         As per SenderController, we display the composer directly. -->
+                    <Label text="[ ENCRYPTED TRANSMISSION FEED SECURED ]" styleClass="label-mono" style="-fx-text-fill: #3E4A3F;"/>
+                </VBox>
+                
+                <!-- Centered Composer Composer -->
+                <VBox fx:id="messageContentBox" spacing="12.0" styleClass="surface-card">
+                    <padding>
+                        <Insets top="16.0" bottom="16.0" left="16.0" right="16.0"/>
+                    </padding>
+                    <!-- Transmission Type Row -->
+                    <HBox spacing="12.0" alignment="CENTER_LEFT">
+                        <ToggleButton fx:id="tglNormal" text="NORMAL" styleClass="secondary-button" />
+                        <ToggleButton fx:id="tglWarning" text="WARNING" styleClass="secondary-button" />
+                        <ToggleButton fx:id="tglCritical" text="CRITICAL" styleClass="secondary-button" />
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <ToggleButton fx:id="tglMissionBrief" text="Mission Brief" styleClass="secondary-button" />
+                    </HBox>
+                    
+                    <TextArea fx:id="txtMessage" prefHeight="100.0" promptText="Enter confidential directive..." styleClass="terminal-input" wrapText="true"/>
+                    
+                    <!-- HIDDEN Mission Brief Box -->
+                    <VBox fx:id="missionBriefBox" spacing="8.0" visible="false" managed="false" styleClass="surface-card" style="-fx-border-color: rgba(80, 200, 120, 0.2); -fx-border-width: 1;">
+                        <padding>
+                            <Insets top="12.0" bottom="12.0" left="12.0" right="12.0"/>
+                        </padding>
+                        <Label text="MISSION BRIEFING DATA" styleClass="label-mono"/>
+                        <HBox spacing="10.0"><TextField fx:id="txtMission" promptText="Mission" HBox.hgrow="ALWAYS" styleClass="text-field"/><TextField fx:id="txtLocation" promptText="Location" HBox.hgrow="ALWAYS" styleClass="text-field"/></HBox>
+                        <HBox spacing="10.0"><TextField fx:id="txtTime" promptText="Time (e.g. 2200 hrs)" HBox.hgrow="ALWAYS" styleClass="text-field"/><ComboBox fx:id="cmbMissionCommander" promptText="Commander" HBox.hgrow="ALWAYS" styleClass="combo-box"/></HBox>
+                    </VBox>
+                    
+                    <!-- Encryption Strategy & Controls (Integrated into Composer) -->
+                    <HBox spacing="12.0" alignment="CENTER_LEFT">
+                        <VBox spacing="4.0">
+                            <Label text="Encryption Strategy" styleClass="label-sub"/>
+                            <ComboBox fx:id="cmbEncryption" prefWidth="180.0" styleClass="combo-box"/>
+                        </VBox>
+                        <VBox spacing="4.0">
+                            <Label text="Manual Key" styleClass="label-sub"/>
+                            <TextField fx:id="txtKey" prefWidth="150.0" styleClass="text-field"/>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button fx:id="btnSend" text="TRANSMIT" styleClass="primary-button"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </SplitPane>
+    </center>
+
+</BorderPane>

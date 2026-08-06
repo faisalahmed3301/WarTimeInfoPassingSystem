@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="700.0" prefWidth="1200.0" styleClass="topographic-bg" stylesheets="@light_tactical.css" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wartime.system.controller.IntroController">
+   <children>
+      <!-- Centered Logo and Loading Content -->
+      <VBox alignment="CENTER" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <!-- Clean Header Branding -->
+            <Label alignment="CENTER" text="SAFEPASS" styleClass="label-headline" style="-fx-font-size: 64px; -fx-letter-spacing: 4px; -fx-text-fill: #1E293B;">
+            </Label>
+            
+            <Label text="SECURE INTELLIGENCE NETWORK" styleClass="label-sub" style="-fx-font-size: 16px; -fx-letter-spacing: 2px;">
+            </Label>
+            
+            <!-- System Loading Blue Glow Bar -->
+            <VBox alignment="CENTER" spacing="10.0" style="-fx-padding: 40 0 0 0;">
+               <ProgressBar fx:id="progressLoad" prefWidth="400.0" prefHeight="8.0" progress="1.0" />
+               <Label text="SYSTEM.READY" styleClass="label-mono" />
+            </VBox>
+
+            <Button fx:id="btnNext" text="Initialize Operations" styleClass="primary-button" prefHeight="55.0" prefWidth="300.0" style="-fx-font-size: 18px;" />
+         </children>
+      </VBox>
+
+      <!-- Info Button Top Right -->
+      <Button fx:id="btnInfo" styleClass="secondary-button" style="-fx-border-radius: 20; -fx-background-radius: 20;" text="?" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
+   </children>
+</AnchorPane>

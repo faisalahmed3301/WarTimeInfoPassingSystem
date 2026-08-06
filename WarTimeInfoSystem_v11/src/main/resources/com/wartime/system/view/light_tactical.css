@@ -1,0 +1,246 @@
+/* ============================================================
+   WAR-TIME INFORMATION SYSTEM — Clean Intelligence Theme
+   Snow & Cobalt Design System (Light Mode)
+   ============================================================ */
+
+.root {
+    -fx-font-family: "Inter", "Public Sans", "Segoe UI", "Arial";
+    -fx-background-color: #F8FAFC; /* Secondary Surface Base */
+    -fx-font-size: 14px;
+    -fx-text-fill: #1E293B;
+}
+
+/* ========================= CONTAINERS & SURFACES ========================= */
+.surface-card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 14px;
+    -fx-border-radius: 14px;
+    /* Extremely subtle shadow */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 6, 0.0, 0, 4);
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+}
+
+.cloud-bubble {
+    -fx-background-color: #F1F5F9;
+    -fx-background-radius: 14px;
+    -fx-padding: 12px;
+}
+
+.nav-rail-global {
+    -fx-background-color: #F1F5F9; /* Light Slate */
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 0 1px 0 0;
+}
+
+.nav-rail-sub {
+    -fx-background-color: #FFFFFF;
+}
+
+.split-pane {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+.split-pane *.split-pane-divider {
+    -fx-background-color: #E2E8F0;
+    -fx-padding: 0 1 0 1;
+}
+
+/* ========================= TYPOGRAPHY ========================= */
+.label, .label-headline, .label-sub, .text {
+    -fx-text-fill: #1E293B;
+}
+
+.label-headline {
+    -fx-font-size: 24px;
+    -fx-font-weight: 800;
+    -fx-letter-spacing: -0.5px;
+}
+
+.label-sub {
+    -fx-font-weight: bold;
+    -fx-text-fill: #64748B;
+    -fx-font-size: 12px;
+}
+
+.label-mono {
+    -fx-font-family: "Monospaced";
+    -fx-text-fill: #3B82F6;
+    -fx-font-size: 13px;
+}
+
+.text-primary {
+    -fx-text-fill: #1E293B;
+}
+
+/* ========================= BUTTONS ========================= */
+.primary-button, .button {
+    -fx-background-color: #3B82F6;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-background-radius: 14px;
+    -fx-border-radius: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 12 24;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.4), 8, 0, 0, 2);
+    -fx-border-width: 0;
+}
+
+.primary-button:hover, .button:hover {
+    -fx-background-color: #2563EB;
+}
+
+.primary-button:pressed, .button:pressed {
+    -fx-background-color: #1D4ED8;
+}
+
+.secondary-button {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1px;
+    -fx-background-radius: 14px;
+    -fx-border-radius: 14px;
+    -fx-text-fill: #3B82F6;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #F1F5F9;
+}
+
+.danger-button {
+    -fx-background-color: #FEF2F2;
+    -fx-border-color: #FCA5A5;
+    -fx-border-width: 1px;
+    -fx-text-fill: #EF4444;
+    -fx-background-radius: 14px;
+    -fx-border-radius: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+}
+.danger-button:hover {
+    -fx-background-color: #EF4444;
+    -fx-text-fill: #ffffff;
+}
+
+/* ========================= TOGGLE BUTTONS ========================= */
+.toggle-button {
+    -fx-background-color: #F8FAFC;
+    -fx-text-fill: #64748B;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1;
+    -fx-border-radius: 14px;
+    -fx-background-radius: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 8 16;
+}
+
+.toggle-button:selected {
+    -fx-background-color: #EFF6FF;
+    -fx-text-fill: #3B82F6;
+    -fx-border-color: #BFDBFE;
+}
+
+/* ========================= INPUTS & TERMINAL ========================= */
+.text-field, .password-field, .combo-box, .text-area {
+    -fx-background-color: #F8FAFC;
+    -fx-control-inner-background: #F8FAFC;
+    -fx-text-fill: #1E293B;
+    -fx-prompt-text-fill: #94A3B8;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 14px;
+    -fx-background-radius: 14px;
+    -fx-padding: 10px 14px;
+}
+
+.text-field:focused, .password-field:focused, .text-area:focused, .combo-box:focused {
+    -fx-border-color: #3B82F6;
+    -fx-background-color: #FFFFFF;
+    -fx-control-inner-background: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.2), 4, 0, 0, 0);
+}
+
+.terminal-input {
+    -fx-control-inner-background: #F8FAFC;
+    -fx-background-color: #F8FAFC;
+    -fx-text-fill: #10B981; /* Emerald Status for text */
+    -fx-font-family: "Monospaced";
+    -fx-prompt-text-fill: #94A3B8;
+    
+    -fx-border-color: transparent transparent #CBD5E1 transparent;
+    -fx-border-width: 0 0 2px 0;
+    -fx-background-radius: 14px 14px 0 0;
+    -fx-padding: 12px;
+}
+.terminal-input:focused {
+    -fx-border-color: transparent transparent #3B82F6 transparent;
+    -fx-background-color: #FFFFFF;
+    -fx-control-inner-background: #FFFFFF;
+}
+
+/* ComboBox dropdown */
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1E293B;
+}
+.combo-box-popup .list-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+.combo-box-popup .list-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #1E293B;
+    -fx-padding: 8px 12px;
+}
+.combo-box-popup .list-cell:filled:hover {
+    -fx-background-color: #EFF6FF;
+    -fx-text-fill: #3B82F6;
+}
+
+/* ========================= LIST VIEWS ========================= */
+.list-view {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-border-width: 0;
+}
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1E293B;
+    -fx-padding: 12px 16px;
+    -fx-border-color: transparent transparent #F1F5F9 transparent;
+    -fx-border-width: 0 0 1px 0;
+}
+.list-cell:filled:hover {
+    -fx-background-color: #F8FAFC;
+}
+.list-cell:filled:selected:focused,
+.list-cell:filled:selected {
+    -fx-background-color: #EFF6FF;
+    -fx-border-color: transparent transparent #3B82F6 transparent;
+}
+
+/* ========================= EFFECTS & OVERLAYS ========================= */
+.blur-overlay {
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Base Topographic Background Style */
+.topographic-bg {
+    -fx-background-color: #F8FAFC;
+    /* Optional: -fx-background-image: url('images/topo_grid.png'); */
+    -fx-background-size: cover;
+}
+
+.progress-bar > .bar {
+    -fx-background-color: #3B82F6;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(59, 130, 246, 0.6), 8, 0, 0, 0);
+}
+.progress-bar > .track {
+    -fx-background-color: #E2E8F0;
+    -fx-background-radius: 10px;
+}
