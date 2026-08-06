@@ -1,0 +1,384 @@
+
+.root {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+}
+
+/* BACKGROUNDS  */
+
+.intro-root {
+    -fx-background-image: url("images/intro_bg.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+.outro-root {
+    -fx-background-image: url("images/outro_bg.png");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+/* --- DARK MODE (Default) --- */
+.standard-root {
+    -fx-background-color: #333D29;
+}
+
+/* --- LIGHT MODE Override --- */
+.light-mode.standard-root {
+    -fx-background-color: #7A8360;
+}
+
+/*  LABELS*/
+
+.label {
+    -fx-text-fill: #E8E8E8;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 3, 0, 0, 1);
+}
+
+.light-mode .label {
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 3, 0, 0, 1);
+}
+
+/*BUTTONS */
+
+.button {
+    -fx-background-color: #582F0E;
+    -fx-text-fill: #F5F5F5;
+    -fx-font-weight: bold;
+    -fx-border-color: #7F4F24;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: #7F4F24;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.45), 6, 0, 0, 2);
+}
+
+.button:pressed {
+    -fx-background-color: #4A2508;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 2, 0, 0, 1);
+}
+
+.light-mode .button {
+    -fx-background-color: #936639;
+    -fx-border-color: #A68A64;
+    -fx-text-fill: #FFFFFF;
+}
+
+.light-mode .button:hover {
+    -fx-background-color: #A68A64;
+}
+
+.light-mode .button:pressed {
+    -fx-background-color: #7F4F24;
+}
+
+/* Danger Button (Delete) */
+.btn-danger {
+    -fx-background-color: #8B0000;
+    -fx-border-color: #A52A2A;
+}
+
+.btn-danger:hover {
+    -fx-background-color: #A52A2A;
+}
+
+.light-mode .btn-danger {
+    -fx-background-color: #B22222;
+    -fx-border-color: #CD5C5C;
+}
+
+.light-mode .btn-danger:hover {
+    -fx-background-color: #CD5C5C;
+}
+
+/*  TOGGLE BUTTONS */
+
+.toggle-button {
+    -fx-background-color: #414833;
+    -fx-text-fill: #C8C8C8;
+    -fx-font-weight: bold;
+    -fx-border-color: #582F0E;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 8 16;
+}
+
+.toggle-button:selected {
+    -fx-background-color: #582F0E;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #7F4F24;
+    -fx-effect: dropshadow(gaussian, rgba(127, 79, 36, 0.5), 6, 0, 0, 0);
+}
+
+.toggle-button:hover {
+    -fx-background-color: #4A5540;
+}
+
+.light-mode .toggle-button {
+    -fx-background-color: #A4AC86;
+    -fx-text-fill: #333D29;
+    -fx-border-color: #936639;
+}
+
+.light-mode .toggle-button:selected {
+    -fx-background-color: #936639;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #A68A64;
+}
+
+/* EYE TOGGLE (Password)  */
+
+.eye-toggle {
+    -fx-cursor: hand;
+    -fx-padding: 0 4;
+    -fx-effect: none;
+}
+
+.eye-toggle:hover {
+    -fx-opacity: 0.8;
+}
+
+/* INPUTS = */
+
+.text-field,
+.password-field,
+.text-area,
+.combo-box {
+    -fx-background-color: #2A3020;
+    -fx-text-fill: #E8E8E8;
+    -fx-prompt-text-fill: #7A8360;
+    -fx-border-color: #582F0E;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.text-field:focused,
+.password-field:focused,
+.text-area:focused,
+.combo-box:focused {
+    -fx-border-color: #7F4F24;
+    -fx-background-color: #333D29;
+    -fx-effect: dropshadow(gaussian, rgba(127, 79, 36, 0.3), 6, 0, 0, 0);
+}
+
+.light-mode .text-field,
+.light-mode .password-field,
+.light-mode .text-area,
+.light-mode .combo-box {
+    -fx-background-color: #C8D0AA;
+    -fx-text-fill: #1A1F14;
+    -fx-prompt-text-fill: #656D4A;
+    -fx-border-color: #936639;
+}
+
+.light-mode .text-field:focused,
+.light-mode .password-field:focused,
+.light-mode .text-area:focused,
+.light-mode .combo-box:focused {
+    -fx-border-color: #A68A64;
+    -fx-background-color: #D8DFC0;
+}
+
+/* ComboBox dropdown / popup styling */
+.combo-box .list-cell {
+    -fx-background-color: #2A3020;
+    -fx-text-fill: #E8E8E8;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #2A3020;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: #2A3020;
+    -fx-text-fill: #E8E8E8;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-background-color: #582F0E;
+    -fx-text-fill: #FFFFFF;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected {
+    -fx-background-color: #7F4F24;
+    -fx-text-fill: #FFFFFF;
+}
+
+
+.terminal-input {
+    -fx-background-color: #1A1F14;
+    -fx-control-inner-background: #1A1F14;
+    -fx-text-fill: #A4AC86;
+    -fx-prompt-text-fill: #414833;
+    -fx-border-color: #582F0E;
+    -fx-font-family: "Monospaced";
+    -fx-font-weight: bold;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.terminal-input:focused {
+    -fx-border-color: #7F4F24;
+    -fx-background-color: #222A1A;
+    -fx-control-inner-background: #222A1A;
+    -fx-effect: dropshadow(gaussian, rgba(127, 79, 36, 0.4), 8, 0, 0, 0);
+}
+
+.light-mode .terminal-input {
+    -fx-background-color: #333D29;
+    -fx-control-inner-background: #333D29;
+    -fx-text-fill: #A4AC86;
+    -fx-border-color: #936639;
+}
+
+
+.list-view {
+    -fx-background-color: #414833;
+    -fx-control-inner-background: #414833;
+    -fx-border-color: #582F0E;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.list-cell {
+    -fx-text-fill: #E8E8E8;
+    -fx-background-color: #414833;
+    -fx-padding: 8 12;
+}
+
+.list-cell:filled:selected:focused,
+.list-cell:filled:selected {
+    -fx-background-color: #582F0E;
+    -fx-text-fill: #FFFFFF;
+}
+
+.list-cell:even {
+    -fx-background-color: #3A4230;
+}
+/*same color hoile visibility poor hoy */
+
+.list-cell:filled:hover {
+    -fx-background-color: #4A5540;
+}
+
+.light-mode .list-view {
+    -fx-background-color: #A4AC86;
+    -fx-control-inner-background: #A4AC86;
+    -fx-border-color: #936639;
+}
+
+.light-mode .list-cell {
+    -fx-text-fill: #333D29;
+    -fx-background-color: #A4AC86;
+}
+
+.light-mode .list-cell:even {
+    -fx-background-color: #97A07A;
+}
+
+.light-mode .list-cell:filled:selected:focused,
+.light-mode .list-cell:filled:selected {
+    -fx-background-color: #936639;
+    -fx-text-fill: #FFFFFF;
+}
+
+.light-mode .list-cell:filled:hover {
+    -fx-background-color: #8B9A6E;
+}
+
+/* THEME TOGGLE = */
+
+.theme-toggle {
+    -fx-background-color: #414833;
+    -fx-min-width: 44;
+    -fx-max-width: 44;
+    -fx-min-height: 44;
+    -fx-max-height: 44;
+    -fx-background-radius: 22;
+    -fx-border-radius: 22;
+    -fx-border-color: #582F0E;
+    -fx-border-width: 1;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 6, 0, 0, 2);
+    -fx-alignment: center;
+}
+
+.theme-toggle:hover {
+    -fx-background-color: #582F0E;
+}
+
+.light-mode .theme-toggle {
+    -fx-background-color: #A4AC86;
+    /* Darker color for moon icon */
+    -fx-border-color: #936639;
+}
+
+.light-mode .theme-toggle:hover {
+    -fx-background-color: #936639;
+    -fx-text-fill: #FFFFFF;
+}
+
+
+.scroll-bar {
+    -fx-background-color: #333D29;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #582F0E;
+    -fx-background-radius: 4;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #7F4F24;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+.light-mode .scroll-bar {
+    -fx-background-color: #656D4A;
+}
+
+.light-mode .scroll-bar .thumb {
+    -fx-background-color: #936639;
+}
+
+.dialog-pane {
+    -fx-background-color: #2b2b2b;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #1a1a1a;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #A4AC86;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .content {
+    -fx-background-color: #2b2b2b;
+}

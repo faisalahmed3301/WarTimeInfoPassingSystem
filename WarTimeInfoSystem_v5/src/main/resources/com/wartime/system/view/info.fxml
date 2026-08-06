@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="20.0" styleClass="standard-root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wartime.system.controller.InfoController">
+   <children>
+      <Label prefHeight="50.0" prefWidth="251.0" text="SYSTEM INFORMATION">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+       <TextArea editable="false" maxWidth="600.0" prefHeight="300.0" styleClass="terminal-input" text="This application simulates a secure war-time message transmission system.&#10;&#10;Features :&#10;- Encrypted Messaging&#10;- Role-based Access Control&#10;&#10;&#10;Developed using JavaFX and OOP Principles.&#10;&#10;" wrapText="true" />
+      <Button fx:id="btnBack" mnemonicParsing="false" prefWidth="100.0" text="BACK" />
+   </children>
+</VBox>
