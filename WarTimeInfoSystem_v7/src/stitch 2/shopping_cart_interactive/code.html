@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary": "#ffffff",
+              "background": "#f8f9fa",
+              "on-secondary-fixed-variant": "#653d1e",
+              "tertiary": "#713900",
+              "surface-container-highest": "#e1e3e4",
+              "on-primary": "#ffffff",
+              "on-primary-container": "#a8e7c5",
+              "inverse-surface": "#2e3132",
+              "surface-variant": "#e1e3e4",
+              "inverse-primary": "#95d4b3",
+              "on-surface-variant": "#404943",
+              "outline-variant": "#bfc9c1",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#301400",
+              "primary-container": "#2d6a4f",
+              "inverse-on-surface": "#f0f1f2",
+              "on-tertiary-container": "#ffd1b1",
+              "primary-fixed": "#b1f0ce",
+              "on-error-container": "#93000a",
+              "secondary-container": "#fdc39a",
+              "on-primary-fixed-variant": "#0e5138",
+              "surface-bright": "#f8f9fa",
+              "secondary-fixed": "#ffdcc5",
+              "secondary-fixed-dim": "#f4bb92",
+              "on-secondary-container": "#794e2e",
+              "outline": "#707973",
+              "tertiary-fixed-dim": "#ffb780",
+              "on-tertiary-fixed": "#2f1400",
+              "on-tertiary": "#ffffff",
+              "surface-container-low": "#f3f4f5",
+              "on-primary-fixed": "#002114",
+              "error-container": "#ffdad6",
+              "secondary": "#805533",
+              "surface-tint": "#2c694e",
+              "on-background": "#191c1d",
+              "primary": "#0f5238",
+              "tertiary-container": "#8f4f14",
+              "surface-container-high": "#e7e8e9",
+              "error": "#ba1a1a",
+              "surface-dim": "#d9dadb",
+              "primary-fixed-dim": "#95d4b3",
+              "tertiary-fixed": "#ffdcc4",
+              "on-tertiary-fixed-variant": "#6f3800",
+              "surface": "#f8f9fa",
+              "surface-container": "#edeeef",
+              "on-surface": "#191c1d",
+              "on-error": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 w-full z-50 bg-white/70 dark:bg-zinc-950/70 backdrop-blur-md shadow-sm dark:shadow-none">
+<nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto font-['Plus_Jakarta_Sans'] tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold text-emerald-900 dark:text-emerald-100 italic">Harvest Market</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors" href="#">Shop All</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors" href="#">Fresh Produce</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors" href="#">Pantry</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors" href="#">Dairy</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors" href="#">Bakery</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:opacity-80 transition-all duration-300 scale-95 active:scale-90 text-emerald-800 dark:text-emerald-400">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="p-2 hover:opacity-80 transition-all duration-300 scale-95 active:scale-90 relative text-emerald-800 dark:text-emerald-400">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute top-0 right-0 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold px-1.5 py-0.5 rounded-full" id="cart-badge">4</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="max-w-7xl mx-auto px-6 pt-12 pb-24">
+<div class="mb-12">
+<h1 class="text-4xl md:text-5xl font-headline font-extrabold text-on-surface tracking-tight mb-2">Your Market Basket</h1>
+<p class="text-on-surface-variant font-medium">Curating the finest local harvests for your table.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Cart Items List -->
+<div class="lg:col-span-8 space-y-6" id="cart-items-container">
+<!-- Item 1 -->
+<div class="cart-item group flex flex-col md:flex-row gap-6 p-6 bg-surface-container-lowest rounded-xl transition-all duration-300 hover:shadow-[0_20px_40px_rgba(25,28,29,0.04)] hover:scale-[1.01]" data-price="3.99">
+<div class="w-full md:w-32 h-32 rounded-lg overflow-hidden bg-surface-container-low flex-shrink-0">
+<img alt="Fresh Organic Carrots" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDNHWMaRgYVEHm4-s_urhlQkQNuPH-gT_qQ61rf-mdoUZaDaEdytJQ_VODPToZiUlL79WzcehBZ5OBs-JmcT6blwSLYp1eecUbRn1lCRbUyO-X_nDxVH8qEJXJWrRIsO7VTs0V8ZcEnhg_hJk3MFvor1Wy_bajMEpo3yU58_lyxOc2My2Gonc0HGDaERXca7TEsCsujKhOQWeifmY80pmEB9diuC1H3mIpNDuCtKfxhaizf0s7-3-t1mIphHRIY2_ztUz5TIEswX1o"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-wider mb-2">Fresh Produce</span>
+<h3 class="text-xl font-headline font-bold text-on-surface">Heirloom Heritage Carrots</h3>
+<p class="text-sm text-on-surface-variant">1lb Bunch • Locally Grown</p>
+</div>
+<button class="delete-item text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="flex justify-between items-end mt-4">
+<div class="flex items-center bg-surface-container-highest rounded-lg p-1">
+<button class="qty-btn-minus w-8 h-8 flex items-center justify-center hover:bg-surface-container-lowest rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="qty-value w-10 text-center font-bold text-on-surface">2</span>
+<button class="qty-btn-plus w-8 h-8 flex items-center justify-center hover:bg-surface-container-lowest rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<div class="text-right">
+<p class="text-xs text-on-surface-variant line-through">$4.50</p>
+<p class="text-lg font-bold text-primary">$3.99 <span class="text-sm font-normal text-on-surface-variant">/ unit</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="cart-item group flex flex-col md:flex-row gap-6 p-6 bg-surface-container-lowest rounded-xl transition-all duration-300 hover:shadow-[0_20px_40px_rgba(25,28,29,0.04)] hover:scale-[1.01]" data-price="8.50">
+<div class="w-full md:w-32 h-32 rounded-lg overflow-hidden bg-surface-container-low flex-shrink-0">
+<img alt="Artisan Sourdough" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCah2uTbZV8yF-DdrEtbeynT4aphWLErgSripwQedaCGQFNQ9H7XxI_101otMVMZIg8dmbeCNXC4_4lJxKNo7m_U_r3PF0xQWa3B-UmY1ix7iHX3qlkXuiJagS0M7Vrk5QyjSDmJPOVoyWk3GYIPZKBH89ggZvfe_n0pkvrV1mosa5ZEnl4cPC2-J5gdTHleZNnvlTlOpHijxKAsvUBFOtRipha9UKFFdJL8gtzPWHNd5GdwBuIR-1HuMmsaEa6iE8bBOrSuw-Xqlsu"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<span class="inline-block px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-bold uppercase tracking-wider mb-2">Bakery</span>
+<h3 class="text-xl font-headline font-bold text-on-surface">Wild Yeast Sourdough</h3>
+<p class="text-sm text-on-surface-variant">800g Boule • Stone Ground</p>
+</div>
+<button class="delete-item text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="flex justify-between items-end mt-4">
+<div class="flex items-center bg-surface-container-highest rounded-lg p-1">
+<button class="qty-btn-minus w-8 h-8 flex items-center justify-center hover:bg-surface-container-lowest rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="qty-value w-10 text-center font-bold text-on-surface">1</span>
+<button class="qty-btn-plus w-8 h-8 flex items-center justify-center hover:bg-surface-container-lowest rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<div class="text-right">
+<p class="text-lg font-bold text-primary">$8.50 <span class="text-sm font-normal text-on-surface-variant">/ unit</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="cart-item group flex flex-col md:flex-row gap-6 p-6 bg-surface-container-lowest rounded-xl transition-all duration-300 hover:shadow-[0_20px_40px_rgba(25,28,29,0.04)] hover:scale-[1.01]" data-price="5.25">
+<div class="w-full md:w-32 h-32 rounded-lg overflow-hidden bg-surface-container-low flex-shrink-0">
+<img alt="Grass-fed Milk" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVVZUxXyailFGb9oK8tJ54Pll4HLmLpS0f5IjUShx-VPlefACM2eHgFKEahFQ3xnBDp54tJ6p8rYANo2c8w2dtpGnWTMPfoptxoZwKt8Gcp5aDZ2JgHMezTWHofrKDd4szJ6OkeOWXZdr3G_zibRgH9-j2WVRlAyA9s1Jb615nvCWXQdOnrZS6E5p0mujkFX94e7T-lScSVDktteH2pPnwP-77RtiiLfX9F6xn1cT9wjBjoFVPV1smh83PYRUMJBUmIVl4ltG4ZV4U"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-wider mb-2">Dairy</span>
+<h3 class="text-xl font-headline font-bold text-on-surface">Golden Guernsey Milk</h3>
+<p class="text-sm text-on-surface-variant">1L Glass Bottle • Grass-fed</p>
+</div>
+<button class="delete-item text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="flex justify-between items-end mt-4">
+<div class="flex items-center bg-surface-container-highest rounded-lg p-1">
+<button class="qty-btn-minus w-8 h-8 flex items-center justify-center hover:bg-surface-container-lowest rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">remove</span>
+</button>
+<span class="qty-value w-10 text-center font-bold text-on-surface">1</span>
+<button class="qty-btn-plus w-8 h-8 flex items-center justify-center hover:bg-surface-container-lowest rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<div class="text-right">
+<p class="text-lg font-bold text-primary">$5.25 <span class="text-sm font-normal text-on-surface-variant">/ unit</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary Sidebar -->
+<div class="lg:col-span-4 sticky top-24">
+<div class="bg-surface-container-low p-8 rounded-xl">
+<h2 class="text-2xl font-headline font-bold text-on-surface mb-8">Summary</h2>
+<div class="space-y-4 mb-8">
+<div class="flex justify-between text-on-surface-variant font-medium">
+<span>Subtotal</span>
+<span class="text-on-surface" id="summary-subtotal">$21.73</span>
+</div>
+<div class="flex justify-between text-on-surface-variant font-medium">
+<span>Sustainable Shipping</span>
+<span class="text-primary font-bold">FREE</span>
+</div>
+<div class="flex justify-between text-on-surface-variant font-medium">
+<span>Estimated Taxes</span>
+<span class="text-on-surface" id="summary-taxes">$1.84</span>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/30 mb-8">
+<div class="flex justify-between items-end">
+<span class="text-lg font-headline font-bold text-on-surface">Total</span>
+<span class="text-3xl font-headline font-black text-primary" id="summary-total">$23.57</span>
+</div>
+</div>
+<a class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold rounded-lg shadow-lg hover:opacity-90 transition-all scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2" href="checkout.html">
+                        Proceed to Checkout
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+<div class="mt-8 p-4 bg-surface-container-highest rounded-lg border border-outline-variant/10">
+<div class="flex items-center gap-3 text-secondary text-sm font-bold mb-2">
+<span class="material-symbols-outlined">local_shipping</span>
+                            Carbon-Neutral Delivery
+                        </div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                            Your order supports local farmers and will be delivered in 100% compostable packaging within 24 hours.
+                        </p>
+</div>
+</div>
+<!-- Promo Code -->
+<div class="mt-6">
+<div class="flex gap-2">
+<input class="flex-grow bg-surface-container-lowest border-none focus:ring-2 focus:ring-primary rounded-lg px-4 font-medium text-on-surface" id="promo-input" placeholder="Promo Code" type="text"/>
+<button class="px-6 py-2 bg-secondary-fixed text-on-secondary-fixed font-bold rounded-lg hover:bg-secondary-fixed-dim transition-colors" id="promo-apply-btn">Apply</button>
+</div>
+<p class="mt-2 text-xs font-bold hidden" id="promo-message"></p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full mt-20 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950 font-['Manrope']">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 py-12 max-w-7xl mx-auto">
+<div class="md:col-span-1">
+<span class="font-['Plus_Jakarta_Sans'] font-black text-emerald-800 dark:text-emerald-200 text-xl block mb-4">Harvest Market</span>
+<p class="text-zinc-500 text-xs uppercase tracking-widest leading-relaxed">
+                    © 2024 Harvest Market. Grown with love.
+                </p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-emerald-900 dark:text-emerald-500 font-bold text-[10px] uppercase tracking-widest mb-2">Shop</span>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors text-xs uppercase tracking-widest" href="#">About Us</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors text-xs uppercase tracking-widest" href="#">Sustainability</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-emerald-900 dark:text-emerald-500 font-bold text-[10px] uppercase tracking-widest mb-2">Support</span>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors text-xs uppercase tracking-widest" href="#">Contact Support</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors text-xs uppercase tracking-widest" href="#">Shipping Policy</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-emerald-900 dark:text-emerald-500 font-bold text-[10px] uppercase tracking-widest mb-2">Legal</span>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors text-xs uppercase tracking-widest" href="#">Privacy</a>
+</div>
+</div>
+</footer>
+<script>
+    function updateTotals() {
+        const cartItems = document.querySelectorAll('.cart-item');
+        let subtotal = 0;
+        let totalQty = 0;
+
+        cartItems.forEach(item => {
+            const price = parseFloat(item.getAttribute('data-price'));
+            const qty = parseInt(item.querySelector('.qty-value').textContent);
+            subtotal += price * qty;
+            totalQty += qty;
+        });
+
+        const taxRate = 0.0846; // Hardcoded based on initial values ($1.84 / $21.73 approx)
+        const taxes = subtotal * taxRate;
+        const total = subtotal + taxes;
+
+        document.getElementById('summary-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+        document.getElementById('summary-taxes').textContent = `$${taxes.toFixed(2)}`;
+        document.getElementById('summary-total').textContent = `$${total.toFixed(2)}`;
+        document.getElementById('cart-badge').textContent = totalQty;
+
+        if (cartItems.length === 0) {
+            document.getElementById('cart-items-container').innerHTML = `
+                <div class="text-center py-12 bg-surface-container-lowest rounded-xl">
+                    <span class="material-symbols-outlined text-6xl text-outline mb-4">shopping_basket</span>
+                    <h3 class="text-xl font-headline font-bold text-on-surface">Your basket is empty</h3>
+                    <p class="text-on-surface-variant mt-2">Time to stock up on fresh local produce!</p>
+                    <a href="#" class="inline-block mt-6 px-8 py-3 bg-primary text-on-primary font-bold rounded-lg">Start Shopping</a>
+                </div>
+            `;
+        }
+    }
+
+    // Handle Quantity Buttons
+    document.addEventListener('click', (e) => {
+        const plusBtn = e.target.closest('.qty-btn-plus');
+        const minusBtn = e.target.closest('.qty-btn-minus');
+        const deleteBtn = e.target.closest('.delete-item');
+
+        if (plusBtn) {
+            const qtySpan = plusBtn.parentElement.querySelector('.qty-value');
+            qtySpan.textContent = parseInt(qtySpan.textContent) + 1;
+            updateTotals();
+        }
+
+        if (minusBtn) {
+            const qtySpan = minusBtn.parentElement.querySelector('.qty-value');
+            const currentQty = parseInt(qtySpan.textContent);
+            if (currentQty > 1) {
+                qtySpan.textContent = currentQty - 1;
+                updateTotals();
+            }
+        }
+
+        if (deleteBtn) {
+            const item = deleteBtn.closest('.cart-item');
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(20px)';
+            setTimeout(() => {
+                item.remove();
+                updateTotals();
+            }, 300);
+        }
+    });
+
+    // Handle Promo Code
+    const promoBtn = document.getElementById('promo-apply-btn');
+    const promoInput = document.getElementById('promo-input');
+    const promoMsg = document.getElementById('promo-message');
+
+    promoBtn.addEventListener('click', () => {
+        const code = promoInput.value.trim().toUpperCase();
+        promoMsg.classList.remove('hidden', 'text-error', 'text-primary');
+        
+        if (code === 'HARVEST10') {
+            promoMsg.textContent = 'Success! 10% discount applied to your order.';
+            promoMsg.classList.add('text-primary');
+            // Logic for actual discount could be added here if requested, 
+            // but the request asks for the message specifically.
+        } else if (code === '') {
+            promoMsg.classList.add('hidden');
+        } else {
+            promoMsg.textContent = 'Invalid Code. Please try again.';
+            promoMsg.classList.add('text-error');
+        }
+    });
+
+    // Initial calculation
+    updateTotals();
+</script>
+</body></html>

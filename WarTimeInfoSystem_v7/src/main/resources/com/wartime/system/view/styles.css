@@ -1,0 +1,573 @@
+/* ============================================
+   WAR-TIME INFORMATION SYSTEM - FUTURISTIC UI
+   Cyberpunk Operations Theme v2
+   ============================================ */
+
+.root {
+    -fx-font-family: "Consolas", "SF Mono", "Monaco", "Courier New", monospace;
+    -fx-font-size: 13px;
+}
+
+/* ==================== BACKGROUNDS ==================== */
+
+.intro-root {
+    -fx-background-image: url("images/intro_bg.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+.outro-root {
+    -fx-background-image: url("images/outro_bg.png");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+/* --- Cyberpunk Dark Theme --- */
+.standard-root {
+    -fx-background-color: #050508;
+}
+
+/* Animated gradient background effect */
+.standard-root::before {
+    -fx-content-display: graphic;
+    -fx-background: radial-gradient(ellipse at center, #0a1525 0%, #050508 70%);
+}
+
+/* Light mode override */
+.light-mode.standard-root {
+    -fx-background-color: #060810;
+}
+
+/* ==================== LABELS ==================== */
+
+.label {
+    -fx-text-fill: #00FFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-letter-spacing: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.5), 6, 0, 0, 2);
+}
+
+.light-mode .label {
+    -fx-text-fill: #00FFFF;
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.6), 6, 0, 0, 2);
+}
+
+/* ==================== BUTTONS ==================== */
+
+.button {
+    -fx-background-color: rgba(0, 255, 255, 0.05);
+    -fx-text-fill: #00FFFF;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-letter-spacing: 1px;
+    -fx-border-color: #00FFFF;
+    -fx-border-width: 2;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+    -fx-padding: 16 32;
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.4), 8, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: rgba(0, 255, 255, 0.2);
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.8), 15, 0, 0, 4);
+    -fx-translate-y: -2;
+}
+
+.button:pressed {
+    -fx-background-color: rgba(0, 255, 255, 0.35);
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.3), 4, 0, 0, 1);
+    -fx-translate-y: 0;
+}
+
+.light-mode .button {
+    -fx-background-color: rgba(0, 255, 255, 0.05);
+    -fx-text-fill: #00FFFF;
+    -fx-border-color: #00FFFF;
+}
+
+.light-mode .button:hover {
+    -fx-background-color: rgba(0, 255, 255, 0.2);
+}
+
+/* Primary Action Button - Maximum Glow */
+.button.primary {
+    -fx-background-color: rgba(0, 255, 255, 0.25);
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #00FFFF;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.7), 12, 0, 0, 3);
+}
+
+.button.primary:hover {
+    -fx-background-color: rgba(0, 255, 255, 0.4);
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 1.0), 25, 0, 0, 6);
+    -fx-translate-y: -3;
+}
+
+/* Danger Button - Red Emergency */
+.button.btn-danger {
+    -fx-background-color: rgba(255, 0, 85, 0.15);
+    -fx-text-fill: #FF0055;
+    -fx-border-color: #FF0055;
+    -fx-effect: dropshadow(gaussian, rgba(255, 0, 85, 0.5), 8, 0, 0, 2);
+}
+
+.button.btn-danger:hover {
+    -fx-background-color: rgba(255, 0, 85, 0.35);
+    -fx-effect: dropshadow(gaussian, rgba(255, 0, 85, 0.9), 18, 0, 0, 5);
+}
+
+.light-mode .button.btn-danger {
+    -fx-background-color: rgba(255, 0, 85, 0.15);
+    -fx-text-fill: #FF0055;
+    -fx-border-color: #FF0055;
+}
+
+/* Secondary - Dimmed */
+.button.secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: #405060;
+    -fx-border-color: #304050;
+    -fx-effect: none;
+}
+
+.button.secondary:hover {
+    -fx-background-color: rgba(64, 80, 96, 0.2);
+    -fx-text-fill: #6080A0;
+    -fx-border-color: #405060;
+    -fx-effect: dropshadow(gaussian, rgba(96, 128, 160, 0.3), 6, 0, 0, 2);
+}
+
+/* ==================== TOGGLE BUTTONS ==================== */
+
+.toggle-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #304050;
+    -fx-font-weight: bold;
+    -fx-font-size: 11px;
+    -fx-letter-spacing: 2px;
+    -fx-border-color: #203040;
+    -fx-border-width: 1;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+    -fx-padding: 14 28;
+}
+
+.toggle-button:selected {
+    -fx-background-color: rgba(0, 255, 255, 0.2);
+    -fx-text-fill: #00FFFF;
+    -fx-border-color: #00FFFF;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.6), 12, 0, 0, 3);
+}
+
+.toggle-button:hover {
+    -fx-background-color: rgba(48, 64, 80, 0.2);
+    -fx-text-fill: #405060;
+}
+
+.toggle-button:selected:hover {
+    -fx-background-color: rgba(0, 255, 255, 0.35);
+    -fx-text-fill: #FFFFFF;
+}
+
+.light-mode .toggle-button {
+    -fx-text-fill: #304050;
+    -fx-border-color: #203040;
+}
+
+.light-mode .toggle-button:selected {
+    -fx-background-color: rgba(0, 255, 255, 0.2);
+    -fx-text-fill: #00FFFF;
+    -fx-border-color: #00FFFF;
+}
+
+/* ==================== EYE TOGGLE (Password) ==================== */
+
+.eye-toggle {
+    -fx-cursor: hand;
+    -fx-padding: 0 6;
+    -fx-effect: none;
+}
+
+.eye-toggle:hover {
+    -fx-opacity: 0.5;
+}
+
+/* ==================== INPUTS ==================== */
+
+.text-field,
+.password-field,
+.text-area,
+.combo-box {
+    -fx-background-color: rgba(0, 20, 40, 0.6);
+    -fx-text-fill: #00FFFF;
+    -fx-prompt-text-fill: #1a3a4a;
+    -fx-border-color: #0a2a3a;
+    -fx-border-width: 1;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 14 18;
+    -fx-font-family: "Consolas", "SF Mono", "Monaco", monospace;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused,
+.password-field:focused,
+.text-area:focused,
+.combo-box:focused {
+    -fx-border-color: #00FFFF;
+    -fx-border-width: 2;
+    -fx-background-color: rgba(0, 40, 60, 0.7);
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.5), 15, 0, 0, 4);
+}
+
+.text-field:hover,
+.password-field:hover,
+.text-area:hover,
+.combo-box:hover {
+    -fx-border-color: #0a4a5a;
+}
+
+.light-mode .text-field,
+.light-mode .password-field,
+.light-mode .text-area,
+.light-mode .combo-box {
+    -fx-background-color: rgba(0, 20, 40, 0.6);
+    -fx-text-fill: #00FFFF;
+    -fx-prompt-text-fill: #1a3a4a;
+    -fx-border-color: #0a2a3a;
+}
+
+.light-mode .text-field:focused,
+.light-mode .password-field:focused,
+.light-mode .text-area:focused,
+.light-mode .combo-box:focused {
+    -fx-border-color: #00FFFF;
+}
+
+/* ComboBox Dropdown */
+.combo-box .list-cell {
+    -fx-background-color: rgba(0, 20, 40, 0.9);
+    -fx-text-fill: #00FFFF;
+    -fx-padding: 12 16;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #0a2030;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: rgba(0, 20, 40, 0.95);
+    -fx-border-color: #00FFFF;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.5), 20, 0, 0, 6);
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #00FFFF;
+    -fx-padding: 14 18;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-background-color: rgba(0, 255, 255, 0.25);
+    -fx-text-fill: #FFFFFF;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected {
+    -fx-background-color: rgba(0, 255, 255, 0.4);
+    -fx-text-fill: #FFFFFF;
+}
+
+.light-mode .combo-box .list-cell {
+    -fx-background-color: rgba(0, 20, 40, 0.9);
+    -fx-text-fill: #00FFFF;
+}
+
+.light-mode .combo-box-popup .list-view {
+    -fx-background-color: rgba(0, 20, 40, 0.95);
+}
+
+/* ==================== TERMINAL INPUT ==================== */
+
+.terminal-input {
+    -fx-background-color: rgba(0, 10, 20, 0.8);
+    -fx-control-inner-background: rgba(0, 10, 20, 0.8);
+    -fx-text-fill: #00FFFF;
+    -fx-prompt-text-fill: #003040;
+    -fx-border-color: #004060;
+    -fx-border-width: 1;
+    -fx-font-family: "Consolas", "SF Mono", "Monaco", monospace;
+    -fx-font-size: 13px;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 16 20;
+}
+
+.terminal-input:focused {
+    -fx-border-color: #00FFFF;
+    -fx-border-width: 2;
+    -fx-background-color: rgba(0, 20, 40, 0.9);
+    -fx-control-inner-background: rgba(0, 20, 40, 0.9);
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.6), 18, 0, 0, 5);
+}
+
+.light-mode .terminal-input {
+    -fx-background-color: rgba(0, 10, 20, 0.8);
+    -fx-control-inner-background: rgba(0, 10, 20, 0.8);
+    -fx-text-fill: #00FFFF;
+    -fx-border-color: #003040;
+}
+
+.light-mode .terminal-input:focused {
+    -fx-border-color: #00FFFF;
+}
+
+/* ==================== LIST VIEW ==================== */
+
+.list-view {
+    -fx-background-color: rgba(0, 15, 30, 0.7);
+    -fx-control-inner-background: rgba(0, 15, 30, 0.7);
+    -fx-border-color: #0a2040;
+    -fx-border-width: 1;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 12, 0, 0, 4);
+}
+
+.list-cell {
+    -fx-text-fill: #5080A0;
+    -fx-background-color: transparent;
+    -fx-padding: 16 20;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: rgba(10, 32, 64, 0.8);
+    -fx-font-family: "Consolas", "SF Mono", "Monaco", monospace;
+    -fx-font-size: 12px;
+}
+
+.list-cell:filled:selected:focused,
+.list-cell:filled:selected {
+    -fx-background-color: rgba(0, 255, 255, 0.25);
+    -fx-text-fill: #00FFFF;
+    -fx-border-color: #00FFFF;
+}
+
+.list-cell:even {
+    -fx-background-color: rgba(0, 10, 25, 0.5);
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: rgba(48, 64, 80, 0.2);
+    -fx-text-fill: #70A0C0;
+}
+
+.list-cell:filled:selected:hover {
+    -fx-background-color: rgba(0, 255, 255, 0.4);
+}
+
+.light-mode .list-view {
+    -fx-background-color: rgba(0, 15, 30, 0.7);
+    -fx-control-inner-background: rgba(0, 15, 30, 0.7);
+    -fx-border-color: #0a2040;
+}
+
+.light-mode .list-cell {
+    -fx-text-fill: #5080A0;
+    -fx-border-color: rgba(10, 32, 64, 0.8);
+}
+
+.light-mode .list-cell:even {
+    -fx-background-color: rgba(0, 10, 25, 0.5);
+}
+
+.light-mode .list-cell:filled:selected:focused,
+.light-mode .list-cell:filled:selected {
+    -fx-background-color: rgba(0, 255, 255, 0.25);
+    -fx-text-fill: #00FFFF;
+}
+
+/* ==================== SCROLLBAR ==================== */
+
+.scroll-bar {
+    -fx-background-color: transparent;
+    -fx-pref-width: 10;
+    -fx-pref-height: 10;
+}
+
+.scroll-bar:horizontal,
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .track {
+    -fx-background-color: rgba(0, 20, 40, 0.5);
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #0a3a4a;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #0a5a6a;
+}
+
+.scroll-bar .thumb:pressed {
+    -fx-background-color: #00FFFF;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: transparent;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+}
+
+.light-mode .scroll-bar .track {
+    -fx-background-color: rgba(0, 20, 40, 0.5);
+}
+
+.light-mode .scroll-bar .thumb {
+    -fx-background-color: #0a3a4a;
+}
+
+/* ==================== THEME TOGGLE ==================== */
+
+.theme-toggle {
+    -fx-background-color: transparent;
+    -fx-min-width: 44;
+    -fx-max-width: 44;
+    -fx-min-height: 44;
+    -fx-max-height: 44;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-color: #00FFFF;
+    -fx-border-width: 2;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.5), 10, 0, 0, 3);
+    -fx-alignment: center;
+}
+
+.theme-toggle:hover {
+    -fx-background-color: rgba(0, 255, 255, 0.2);
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.8), 15, 0, 0, 5);
+}
+
+.light-mode .theme-toggle {
+    -fx-background-color: transparent;
+    -fx-border-color: #00FFFF;
+}
+
+.light-mode .theme-toggle:hover {
+    -fx-background-color: rgba(0, 255, 255, 0.2);
+}
+
+/* ==================== DECORATION & EFFECTS ==================== */
+
+.card {
+    -fx-background-color: rgba(0, 20, 40, 0.6);
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-border-color: #0a3050;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 15, 0, 0, 5);
+    -fx-padding: 28;
+}
+
+.light-mode .card {
+    -fx-background-color: rgba(0, 20, 40, 0.6);
+    -fx-border-color: #0a3050;
+}
+
+/* Separator */
+.separator {
+    -fx-background-color: #0a2040;
+    -fx-pref-height: 1;
+}
+
+.light-mode .separator {
+    -fx-background-color: #0a2040;
+}
+
+/* Status indicator */
+.status-indicator {
+    -fx-background-radius: 50%;
+    -fx-min-width: 12;
+    -fx-min-height: 12;
+    -fx-max-width: 12;
+    -fx-max-height: 12;
+}
+
+.status-indicator.online {
+    -fx-background-color: #00FF88;
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 136, 1.0), 12, 0, 0, 4);
+}
+
+.status-indicator.offline {
+    -fx-background-color: #FF0055;
+    -fx-effect: dropshadow(gaussian, rgba(255, 0, 85, 0.9), 10, 0, 0, 3);
+}
+
+.status-indicator.listening {
+    -fx-background-color: #00FFFF;
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 1.0), 12, 0, 0, 4);
+}
+
+/* ==================== ANIMATIONS ==================== */
+
+@keyframes pulse {
+    0% { -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.4), 8, 0, 0, 2); }
+    50% { -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.8), 14, 0, 0, 4); }
+    100% { -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.4), 8, 0, 0, 2); }
+}
+
+@keyframes scan {
+    0% { -fx-translate-x: -100%; }
+    100% { -fx-translate-x: 200%; }
+}
+
+@keyframes flicker {
+    0% { -fx-opacity: 1.0; }
+    50% { -fx-opacity: 0.95; }
+    75% { -fx-opacity: 0.98; }
+    100% { -fx-opacity: 1.0; }
+}
+
+.pulse {
+    -fx-animation: pulse 1.5s infinite ease-in-out;
+}
+
+.glow {
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 255, 0.9), 30, 0, 0, 8);
+}
+
+.scanline {
+    -fx-animation: scan 3s infinite linear;
+}
+
+.flicker {
+    -fx-animation: flicker 0.15s infinite;
+}
+
+/* Corner accents for cyber effect */
+.corner-accent {
+    -fx-background-color: transparent;
+    -fx-border-color: #00FFFF;
+    -fx-border-width: 0 2 2 0;
+}

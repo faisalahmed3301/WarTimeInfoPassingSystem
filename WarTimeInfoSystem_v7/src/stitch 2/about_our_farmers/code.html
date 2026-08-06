@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#301400",
+              "tertiary-container": "#8f4f14",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed-dim": "#f4bb92",
+              "surface-tint": "#2c694e",
+              "outline-variant": "#bfc9c1",
+              "on-tertiary-fixed-variant": "#6f3800",
+              "error-container": "#ffdad6",
+              "surface-container-low": "#f3f4f5",
+              "inverse-primary": "#95d4b3",
+              "tertiary-fixed": "#ffdcc4",
+              "secondary-fixed": "#ffdcc5",
+              "surface-container": "#edeeef",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#b1f0ce",
+              "error": "#ba1a1a",
+              "primary-fixed-dim": "#95d4b3",
+              "on-surface": "#191c1d",
+              "inverse-on-surface": "#f0f1f2",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#d9dadb",
+              "on-primary-container": "#a8e7c5",
+              "on-primary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-tertiary-container": "#ffd1b1",
+              "primary-container": "#2d6a4f",
+              "surface": "#f8f9fa",
+              "on-surface-variant": "#404943",
+              "on-secondary-fixed-variant": "#653d1e",
+              "inverse-surface": "#2e3132",
+              "on-tertiary-fixed": "#2f1400",
+              "surface-bright": "#f8f9fa",
+              "on-primary-fixed": "#002114",
+              "outline": "#707973",
+              "tertiary": "#713900",
+              "surface-container-highest": "#e1e3e4",
+              "on-primary-fixed-variant": "#0e5138",
+              "background": "#f8f9fa",
+              "secondary-container": "#fdc39a",
+              "on-error": "#ffffff",
+              "on-background": "#191c1d",
+              "tertiary-fixed-dim": "#ffb780",
+              "primary": "#0f5238",
+              "on-secondary-container": "#794e2e",
+              "secondary": "#805533",
+              "surface-container-high": "#e7e8e9"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .botanical-shadow {
+            box-shadow: 0 20px 40px rgba(25, 28, 29, 0.04);
+        }
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-sm font-['Plus_Jakarta_Sans'] tracking-tight">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold text-emerald-900 italic">Harvest Market</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-zinc-600 hover:text-emerald-600 transition-colors" href="#">Shop All</a>
+<a class="text-zinc-600 hover:text-emerald-600 transition-colors" href="#">Fresh Produce</a>
+<a class="text-zinc-600 hover:text-emerald-600 transition-colors" href="#">Pantry</a>
+<a class="text-zinc-600 hover:text-emerald-600 transition-colors" href="#">Dairy</a>
+<a class="text-zinc-600 hover:text-emerald-600 transition-colors border-b-2 border-emerald-700 pb-1 font-bold text-emerald-700" href="#">About Our Farmers</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-zinc-600 hover:opacity-80 transition-all scale-95 active:scale-90">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="p-2 text-zinc-600 hover:opacity-80 transition-all scale-95 active:scale-90">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="relative">
+<!-- Hero Section -->
+<header class="relative w-full h-[716px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Sun-drenched rolling farm hills" class="w-full h-full object-cover" data-alt="wide shot of rolling green agricultural hills at golden hour with soft sunlight filtering through misty morning air" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXTSXm__VHE-yB0GR0LLsixW2D_YKnsoJrixFDmXN_NubDQAhGhPygl0bJ_HdwLurJclNsQgqJRbDZI6s4Xf24A2xDuUYO3j4AEEvR_REWgjz2kkRldnSm8UfG1GjE7OgY3clnUxfkouB4ctBv_oCASn5W_rGUZ1ckHd6ulwIWlFmgBieCDTDWBs_9ldZsUTKhCuvX37-Zol9gQbBLqD6-IzV-MBAFDE8rzWjiYe4Kk_CfAyj9Jt9CC4tWXjo3MlKPeIK5tpSPBe8Y"/>
+<div class="absolute inset-0 bg-gradient-to-r from-emerald-900/60 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-6">
+<div class="max-w-2xl">
+<span class="inline-block px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label text-xs uppercase tracking-widest mb-6">Our Roots</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tighter mb-6">Grown by Hands You Can Trust.</h1>
+<p class="text-xl text-white/90 font-medium leading-relaxed mb-8">We believe the best food comes from people who care about the soil as much as the harvest. Meet the local legends behind your weekly basket.</p>
+</div>
+</div>
+</header>
+<!-- The Soil Story: Sustainable Practices -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="relative">
+<div class="aspect-square rounded-2xl overflow-hidden botanical-shadow">
+<img alt="Rich dark soil with young sprout" class="w-full h-full object-cover" data-alt="Close-up of healthy dark organic soil with a small green sprout emerging, dramatic side lighting highlighting soil texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtdtmb4MDnKENjyrmp-JpHtfXh3idlVYjdOsJLAxRkga4uoCevog49G3PQJOtgcCxRo74LfBPGxpNdvfPcY3BXvSLgBF4MpR8xe4v1uK9cNcuPuZVgimS-u9LDs_6aXfmtF2XWJRNR6uoXosYjP-szwWcyQesWzTM8uhMiV2EMA_b7y3gf3hbPS1CYZ-X1GfFj9ueKNUuYkd9bJusKazpKdnG_reBefUpG0QlXmlauX-BQNGfJldSdzqJn8uZScvdkWBW-ISlH7N22"/>
+</div>
+<div class="absolute -bottom-8 -right-8 w-64 h-64 bg-primary-fixed rounded-2xl -z-10 hidden md:block"></div>
+</div>
+<div>
+<h2 class="font-headline text-4xl font-bold text-primary mb-8 tracking-tight">Our Commitment to the Earth</h2>
+<div class="space-y-8">
+<div class="flex gap-6">
+<div class="w-12 h-12 shrink-0 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</div>
+<div>
+<h3 class="font-headline text-xl font-bold mb-2">Regenerative Agriculture</h3>
+<p class="text-on-surface-variant leading-relaxed">Our farmers focus on topsoil regeneration, increasing biodiversity, and improving the water cycle to ensure fertile land for generations.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-12 h-12 shrink-0 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<h3 class="font-headline text-xl font-bold mb-2">Water Stewardship</h3>
+<p class="text-on-surface-variant leading-relaxed">Implementing drip irrigation and rain harvesting to reduce water waste and protect our local aquifers from depletion.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-12 h-12 shrink-0 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined" data-icon="psychology_alt">psychology_alt</span>
+</div>
+<div>
+<h3 class="font-headline text-xl font-bold mb-2">Ancestral Knowledge</h3>
+<p class="text-on-surface-variant leading-relaxed">We combine modern data analytics with traditional farming wisdom passed down through centuries of land stewardship.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Meet the Producers: Interactive Grid -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+<div>
+<h2 class="font-headline text-4xl font-bold text-primary tracking-tight mb-4">Meet the Producers</h2>
+<p class="text-on-surface-variant max-w-xl">Every product in our market tells a story of hard work, family tradition, and a passion for quality.</p>
+</div>
+<div class="flex gap-2">
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Farmer Card 1 -->
+<article class="group relative bg-surface-container-lowest rounded-xl overflow-hidden botanical-shadow hover:scale-[1.02] transition-transform duration-300 cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Farmer holding vegetable crate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Middle-aged farmer with weathered skin smiling warmly while holding a wooden crate overflowing with organic colorful carrots" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM5mqZbZTCYrH5xHC58d_arV0Zapx6PZWofPpdjQUzwD7T1vY508EzkabxJqa0xgk79_z6WWnKs0tQExxhPaqE2t0sv5xjILl3cbaSZ9wy1hI9Xmsn-kMnMD9F6poaKIpueYLMJc2hmhtJPDFNP-p1fhMgqF72HgMZ6sISHO9yqE_u_y9OBkYasa_qx4fZXvudcqBDSg3kOMpTWSfcHd8u5zSM-h9XwvNMQKRY_4irhsXXy8zscSM0699fpYNJZy2XdrKEAuWEPghF"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-xs font-label uppercase tracking-widest text-secondary font-bold">Seasonal Veggies</span>
+<h3 class="font-headline text-2xl font-bold mt-1">Elias Thorne</h3>
+</div>
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<p class="text-on-surface-variant line-clamp-3 mb-6">"Our family has farmed these 40 acres since 1924. For us, it's not about the yield; it's about the vitality of the soil and the flavor of the fruit."</p>
+<button class="text-primary font-bold flex items-center gap-2 group/btn">
+                                Read Elias' Story
+                                <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_right_alt</span>
+</button>
+</div>
+</article>
+<!-- Farmer Card 2 -->
+<article class="group relative bg-surface-container-lowest rounded-xl overflow-hidden botanical-shadow hover:scale-[1.02] transition-transform duration-300 cursor-pointer md:mt-12">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Artisan baker with flour" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Professional artisan baker in a rustic kitchen dusting a loaf of sourdough bread with flour, soft natural window light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAymCXp9auQrWTSKcBy0VHMysmf7lfy0VHFXJi7JAoUVDD9HyyaviZ4N6duqjY-MsNsCANG6pLoyAu7crzCP04qEIHN8hmgqqumcq7DAEA5co4VZPhX1ZubH0KkWYRSGlWn86Qx3XBv0PFSqRoe04Bp1rtdzxZmQeMBW0lPyJ5WmdPCx766X2IJLBXgAwaCbw7JMsxGkTBigFwrH9mrHghYySr0Ldk3QqOize7blQzQ5egA44j-KwRxmhTD4RYs4cYLw7ym_WR1zsOB"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-xs font-label uppercase tracking-widest text-secondary font-bold">Artisan Bread</span>
+<h3 class="font-headline text-2xl font-bold mt-1">Sarah Jenkins</h3>
+</div>
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">bakery_dining</span>
+</div>
+<p class="text-on-surface-variant line-clamp-3 mb-6">"We use a 100-year-old starter culture and local heirloom grains. Every loaf takes 48 hours to ferment, giving it that signature deep, nutty crumb."</p>
+<button class="text-primary font-bold flex items-center gap-2 group/btn">
+                                Meet Sarah
+                                <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_right_alt</span>
+</button>
+</div>
+</article>
+<!-- Farmer Card 3 -->
+<article class="group relative bg-surface-container-lowest rounded-xl overflow-hidden botanical-shadow hover:scale-[1.02] transition-transform duration-300 cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Dairy farmer with cows" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Young woman in overalls leaning against a wooden fence with happy cows grazing in a lush green pasture background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzohFS9O0yt1efNM8fsMWuYjtBVw6G-_hX87OVF2YMwI3dVJjHZ_YbybeBU5L5Or3UCiwPHfIzkBTemUiI8BrP4IuftL3wpd1J-8mRcYuim-VoLyS4nQfSA_mKnqvRCqyU1dybtoW_uGqnpMbW63y_GjMc_Cbv0uuLyTrZWaMsj3RdwCisW4XIgRK1uZo0VyxYw8bnTMkzYuF4GyrWu7OmeJbs5EdXOXBmt-BMOd7h4o1sWSODJZK3es3d-w59RrpNaGtajrDl1-jh"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-xs font-label uppercase tracking-widest text-secondary font-bold">Grass-fed Dairy</span>
+<h3 class="font-headline text-2xl font-bold mt-1">The Miller Family</h3>
+</div>
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<p class="text-on-surface-variant line-clamp-3 mb-6">"Happy cows make better milk. Ours spend 365 days a year on open pasture, enjoying a diverse diet of wild grasses and clover."</p>
+<button class="text-primary font-bold flex items-center gap-2 group/btn">
+                                The Miller Interview
+                                <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_right_alt</span>
+</button>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Bento Grid: The Harvest Cycle -->
+<section class="py-24 bg-surface-container-low overflow-hidden">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="font-headline text-4xl font-bold text-primary mb-16 text-center tracking-tight">The Life of a Harvest</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-auto md:h-[600px]">
+<div class="md:col-span-2 md:row-span-2 relative group rounded-2xl overflow-hidden">
+<img alt="Hands in soil" class="w-full h-full object-cover" data-alt="Extreme close-up of a farmer's weathered hands cupping a pile of rich dark earth, highlighting the connection between humans and soil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6OIaM5DDSkvv-A65BGJoOeAuiyyAxIdTXXyI92tA93e1rHNEM0xrVkqzTmGkPFoEVwcWta1-UaXNX414GEConLHKWtTHQUCaOKce5dgeQcT_l9oeaNnLW_McrpCp7fF73sQLkH5DYGlntBvE6q5uIzES8lkUI15UN4-6wrZ5OIkZVoVsEYwZRUvRiXeAqoLFsYa9T1iMsV_ezoXHWn1QeYiC3U-ODNnnx2wsibwK7He9Z6jLIddhmo_nbxMpDBIfg1wjtJ3p4UOyG"/>
+<div class="absolute inset-0 bg-black/40 flex flex-col justify-end p-8">
+<h4 class="text-white font-headline text-2xl font-bold">1. Preparation</h4>
+<p class="text-white/80 max-w-sm">Every great meal starts months before, with the nurturing of living, breathing soil.</p>
+</div>
+</div>
+<div class="md:col-span-1 md:row-span-1 relative group rounded-2xl overflow-hidden">
+<img alt="Bee on flower" class="w-full h-full object-cover" data-alt="Macro photo of a honeybee pollinating a bright yellow vegetable flower in a sunlit garden" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEzSRuNabYBMVU03ZWvr4YDXmaenSnmit0IDz0wov9to_qCHQYpxaO-bXcXIb1-2FGIvMT6eQ1PZoKeOvH16r53cAfxQZCGngVxzudiOKXl7oW4SJVgiDlyNuRHPDgSwWpLHP65bMtq6lQOn4fcJRldTxRA0v7hwtYU1Ffqgjfn4A5pdnjARNjsOfHj9oESeOcQYzGLER9lD8s2aZnzteAYlEA2WsA36Dl-sc-Q7rgY-szRt7GNaBdXGQbEuGJNUQ7j86C2x4bVhY9"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+</div>
+<div class="md:col-span-1 md:row-span-2 relative group rounded-2xl overflow-hidden">
+<img alt="Harvesting" class="w-full h-full object-cover" data-alt="A line of fresh green lettuce heads in perfectly straight rows under a bright blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjxecmEcsjseLjF8DvLENk1wHRGFCWfQx4CGluH3ohp7DGAdKElYfM6Nw9Vo7K1i3-wsCvuRV9BLawi1uZU0N57N4m9r82DYzkAsV8gvgtV0FhCU3V-oAEdRrn65naU38nubCQ6bhNqFkISq7xBRfQOHntgoqp5KmOY6gmqt4nz5o2fYPSXxaTkc_tjYbL-gRXsrOM6O8AVVzGFDTIduMoEfjGBfSYCXLX_t1M5LA1f2npLXoVfi69JKwR-YavOnJ5N92241Sl-ZBg"/>
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+<span class="text-white font-headline font-bold text-xl uppercase tracking-widest -rotate-90">Harvest Day</span>
+</div>
+</div>
+<div class="md:col-span-1 md:row-span-1 relative group rounded-2xl overflow-hidden">
+<img alt="Market crate" class="w-full h-full object-cover" data-alt="Close-up of a rustic wooden market crate filled with fresh tomatoes, basil, and garlic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7HTyaOqtM1BQfNp4CBPujZv9u45kgF1RcsIRUoGeAhYFqR5RJOju1W4KwJvllZXamYO6u_BRG8gAmv7FoULNrW6_PHlREvgfT10KUaCdGt61Yi1Oz0GtFMopY2XF-fAusWvZQ1T_IW66o_KCw8B0z8fGXgsqBNfcqnEZwfYKtAWcB9pIEjJ6auty5z457IBueOLmuc-wQFEsvxa4604F2K9Y0hohUAIgIgwV4XZiwcaEqYW5Wb7PPpFlo61gOPFTPjB04zUxPV5RW"/>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 bg-primary text-on-primary">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold mb-8 tracking-tighter">Bring the Farm to Your Kitchen</h2>
+<p class="text-xl text-on-primary-container mb-12">Support these local families and experience the difference that sustainable farming makes in every bite.</p>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button class="bg-gradient-to-br from-primary-fixed to-primary-container text-on-primary-fixed px-10 py-4 rounded-lg font-bold text-lg hover:opacity-90 transition-all botanical-shadow">
+                        Shop This Week's Harvest
+                    </button>
+<button class="border-2 border-primary-fixed text-primary-fixed px-10 py-4 rounded-lg font-bold text-lg hover:bg-primary-container transition-all">
+                        Find a Local Farm Stand
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-100 dark:bg-zinc-950 w-full mt-20 border-t border-zinc-200 dark:border-zinc-800">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 py-12 max-w-7xl mx-auto font-['Manrope'] text-xs uppercase tracking-widest text-emerald-900 dark:text-emerald-500">
+<div class="space-y-4">
+<span class="font-['Plus_Jakarta_Sans'] font-black text-2xl text-emerald-800 dark:text-emerald-200 block normal-case italic">Harvest Market</span>
+<p class="normal-case tracking-normal text-zinc-500 max-w-xs">Connecting local growers with conscious eaters. Quality you can taste, farmers you can name.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold mb-2">Market</h4>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Shop All</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Fresh Produce</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Pantry</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Subscription Box</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold mb-2">Community</h4>
+<a class="text-emerald-700 dark:text-emerald-300 underline" href="#">About Our Farmers</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Sustainability</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Recipes</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Workshops</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-bold mb-2">Support</h4>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Contact Support</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Shipping Policy</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Privacy</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">FAQ</a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-500">
+<span>© 2024 Harvest Market. Grown with love.</span>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-xl">social_leaderboard</span>
+<span class="material-symbols-outlined text-xl">camera</span>
+<span class="material-symbols-outlined text-xl">potted_plant</span>
+</div>
+</div>
+</footer>
+</body></html>

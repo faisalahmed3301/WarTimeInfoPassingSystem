@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | Harvest Market</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,400;1,700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed": "#301400",
+                        "tertiary-container": "#8f4f14",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#f4bb92",
+                        "surface-tint": "#2c694e",
+                        "outline-variant": "#bfc9c1",
+                        "on-tertiary-fixed-variant": "#6f3800",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f3f4f5",
+                        "inverse-primary": "#95d4b3",
+                        "tertiary-fixed": "#ffdcc4",
+                        "secondary-fixed": "#ffdcc5",
+                        "surface-container": "#edeeef",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#b1f0ce",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-surface": "#191c1d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-container": "#a8e7c5",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#ffd1b1",
+                        "primary-container": "#2d6a4f",
+                        "surface": "#f8f9fa",
+                        "on-surface-variant": "#404943",
+                        "on-secondary-fixed-variant": "#653d1e",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-fixed": "#2f1400",
+                        "surface-bright": "#f8f9fa",
+                        "on-primary-fixed": "#002114",
+                        "outline": "#707973",
+                        "tertiary": "#713900",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "background": "#f8f9fa",
+                        "secondary-container": "#fdc39a",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed-dim": "#ffb780",
+                        "primary": "#0f5238",
+                        "on-secondary-container": "#794e2e",
+                        "secondary": "#805533",
+                        "surface-container-high": "#e7e8e9"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active { color: #0f5238; font-weight: 700; }
+        .step-inactive { color: #707973; }
+        .glass-panel {
+            background: rgba(248, 249, 250, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        body { font-family: 'Manrope', sans-serif; background-color: #f8f9fa; color: #191c1d; }
+        h1, h2, h3, .brand-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- Top Navigation (Shell Rule: Simplified for Checkout) -->
+<nav class="sticky top-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-bold text-emerald-900 italic tracking-tight font-headline">Harvest Market</div>
+<div class="flex items-center gap-4 text-zinc-600">
+<span class="material-symbols-outlined">lock</span>
+<span class="text-sm font-medium uppercase tracking-widest">Secure Checkout</span>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-6 py-12 lg:grid lg:grid-cols-12 lg:gap-12">
+<!-- Checkout Flow (Left Column) -->
+<div class="lg:col-span-8">
+<!-- Progress Stepper -->
+<div class="flex items-center gap-4 mb-10 overflow-x-auto pb-2">
+<div class="flex items-center gap-2 whitespace-nowrap step-active">
+<span class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed text-sm font-bold">1</span>
+<span class="text-sm font-label uppercase tracking-wider">Shipping</span>
+</div>
+<div class="h-px w-8 bg-outline-variant"></div>
+<div class="flex items-center gap-2 whitespace-nowrap step-inactive">
+<span class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant text-sm font-bold">2</span>
+<span class="text-sm font-label uppercase tracking-wider">Delivery</span>
+</div>
+<div class="h-px w-8 bg-outline-variant"></div>
+<div class="flex items-center gap-2 whitespace-nowrap step-inactive">
+<span class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant text-sm font-bold">3</span>
+<span class="text-sm font-label uppercase tracking-wider">Payment</span>
+</div>
+</div>
+<form class="space-y-12" id="checkoutForm">
+<!-- Section 1: Shipping Address -->
+<section class="space-y-6" id="step-shipping">
+<div class="flex items-baseline justify-between border-b border-outline-variant pb-4">
+<h2 class="text-3xl font-extrabold tracking-tight text-primary">Shipping Information</h2>
+<span class="text-xs text-outline font-medium uppercase tracking-widest">Required</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-1">First Name</label>
+<input class="w-full px-4 py-3 bg-surface-container-highest rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="e.g. Julian" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-1">Last Name</label>
+<input class="w-full px-4 py-3 bg-surface-container-highest rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="e.g. Thorne" type="text"/>
+</div>
+<div class="md:col-span-2 space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-1">Street Address</label>
+<input class="w-full px-4 py-3 bg-surface-container-highest rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="123 Orchard Lane" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-1">City</label>
+<input class="w-full px-4 py-3 bg-surface-container-highest rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="Portland" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-1">State</label>
+<input class="w-full px-4 py-3 bg-surface-container-highest rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="OR" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-1">Zip</label>
+<input class="w-full px-4 py-3 bg-surface-container-highest rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="97201" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Delivery Method -->
+<section class="space-y-6 pt-6" id="step-delivery">
+<div class="flex items-baseline justify-between border-b border-outline-variant pb-4">
+<h2 class="text-3xl font-extrabold tracking-tight text-primary">Delivery Method</h2>
+<span class="text-xs text-outline font-medium uppercase tracking-widest">Select One</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="relative flex p-5 cursor-pointer rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow ring-1 ring-outline-variant/30 has-[:checked]:ring-primary has-[:checked]:bg-primary-fixed/10">
+<input checked="" class="hidden" name="delivery" type="radio" value="standard"/>
+<div class="flex flex-col">
+<span class="font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">local_shipping</span>
+                                    Standard Ground
+                                </span>
+<span class="text-xs text-on-surface-variant mt-1">3-5 Business Days</span>
+</div>
+<span class="ml-auto font-bold text-emerald-800">FREE</span>
+</label>
+<label class="relative flex p-5 cursor-pointer rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow ring-1 ring-outline-variant/30 has-[:checked]:ring-primary has-[:checked]:bg-primary-fixed/10">
+<input class="hidden" name="delivery" type="radio" value="express"/>
+<div class="flex flex-col">
+<span class="font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">bolt</span>
+                                    Express Harvest
+                                </span>
+<span class="text-xs text-on-surface-variant mt-1">Next Day Delivery</span>
+</div>
+<span class="ml-auto font-bold text-emerald-800">$12.99</span>
+</label>
+</div>
+</section>
+<!-- Section 3: Payment -->
+<section class="space-y-6 pt-6" id="step-payment">
+<div class="flex items-baseline justify-between border-b border-outline-variant pb-4">
+<h2 class="text-3xl font-extrabold tracking-tight text-primary">Secure Payment</h2>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-outline">credit_card</span>
+<span class="material-symbols-outlined text-outline">account_balance_wallet</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm space-y-6 border border-outline-variant/10">
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-1">Cardholder Name</label>
+<input class="w-full px-4 py-3 bg-surface-container-highest rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="Full name as on card" type="text"/>
+</div>
+<div class="space-y-2 relative">
+<label class="text-sm font-bold text-on-surface-variant ml-1">Card Number</label>
+<div class="relative">
+<input class="w-full pl-4 pr-12 py-3 bg-surface-container-highest rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all font-mono" placeholder="0000 0000 0000 0000" type="text"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">credit_card</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-1">Expiry Date</label>
+<input class="w-full px-4 py-3 bg-surface-container-highest rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all font-mono" placeholder="MM/YY" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-bold text-on-surface-variant ml-1">CVV</label>
+<input class="w-full px-4 py-3 bg-surface-container-highest rounded-lg border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all font-mono" placeholder="***" type="password"/>
+</div>
+</div>
+</div>
+</section>
+<div class="pt-8">
+<button class="w-full py-5 bg-gradient-to-br from-primary to-primary-container text-on-primary text-lg font-bold rounded-lg shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all flex items-center justify-center gap-3" type="submit">
+<span class="material-symbols-outlined">shopping_bag</span>
+                        Complete Purchase — $84.32
+                    </button>
+<p class="text-center text-xs text-outline mt-4 font-label uppercase tracking-widest">
+                        Your transaction is encrypted and secure
+                    </p>
+</div>
+</form>
+</div>
+<!-- Order Summary (Right Column) -->
+<aside class="lg:col-span-4 mt-12 lg:mt-0">
+<div class="sticky top-28 bg-surface-container-low rounded-3xl p-8 border border-outline-variant/20">
+<h3 class="text-xl font-bold text-primary mb-6 flex items-center justify-between">
+                    Order Summary
+                    <span class="text-sm font-normal text-on-surface-variant">(3 items)</span>
+</h3>
+<div class="space-y-6 mb-8">
+<!-- Item 1 -->
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden bg-surface-container-highest shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close-up of vibrant organic rainbow carrots with fresh green tops arranged on a rustic wooden surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDovTtKkcTiQG7JjltHCMaBYpEOCAGuwv7RFopCOC9yX4zeosfPyPxWYb9IoZyEPfygF30zrqiRwx7bnOOY6oV-N2lfGszhklsrAJPbmv_rFJtSo3cpC1sGvu6qnabza2DDLcI9M-8VH5jOFK7-Uw0MCK-EtnvD_N1PqkaARuVCcxPdu-zn1N5wwkXgrMUUU1DFHx0QuFm6SHhOVijuRucaV9Lqr4yEJnbn3xurx_mybZTBrrbxLQp4-XrsB19-XpHQLA9OHGB_Oaw3"/>
+</div>
+<div class="flex flex-col justify-center">
+<h4 class="font-bold text-on-surface leading-tight">Organic Heirloom Carrots</h4>
+<p class="text-xs text-emerald-700 font-bold mt-1">Fresh Produce</p>
+<p class="text-sm font-medium mt-1">$4.50</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden bg-surface-container-highest shrink-0">
+<img class="w-full h-full object-cover" data-alt="Artisan sourdough bread loaf with a perfectly dusted crust on a clean linen cloth in natural daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbEq8tHeuSOKjABdcU88bn9TwzYRafHdJFHwLbdmiXhJ7ohcRfZ9UNmlXLPhnm_udq9d5IMMnQk-1OJoRAQNHQbQI1c3h1lDulcFkd5RTCbrvHCc-Qijy82Gi0p3tDMj18IGYuEKenpKf8BJ_m314ae3nACiypKKVVqsqEE5V0QMo-hGhjFtPMK7HECkCXi5OiijTyFVHy8n3MiYZtHfrfyB29ZWSJD8zwjMX7htDYdLQ3hMIN-N73OML1YW3tvdebYV6_BUbmsL_h"/>
+</div>
+<div class="flex flex-col justify-center">
+<h4 class="font-bold text-on-surface leading-tight">Artisan Sourdough Loaf</h4>
+<p class="text-xs text-amber-700 font-bold mt-1">Bakery</p>
+<p class="text-sm font-medium mt-1">$8.90</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex gap-4">
+<div class="w-20 h-20 rounded-xl overflow-hidden bg-surface-container-highest shrink-0">
+<img class="w-full h-full object-cover" data-alt="Rich golden honey in a clear glass jar with a wooden honey dipper and wildflowers in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa3deD4jE9uWDvuO-0b8FAb-as4jFvUveh3-xQRPbVRDDOM1zHNkc-nxMUgX8WbDuHSarTMUMevIgsW4hUzbRCpuq4CPOXUNxyr0iNC1FOxu-_vWpnqR5pdNPO18gkTGU5IsdMs8Wa7HHUrH5I92KpWNOTlc63ROod2LE9pYPwU2aqGV7C8pdC3ZPMSkusdjqVrczo6QrsKbDa_0m8jYeBc8LvjxfrO3cqZDJLMwIZCchv-GvZyly6vHl3ztHJ1AyC9kmIPzKz-UlN"/>
+</div>
+<div class="flex flex-col justify-center">
+<h4 class="font-bold text-on-surface leading-tight">Local Wildflower Honey</h4>
+<p class="text-xs text-orange-700 font-bold mt-1">Pantry</p>
+<p class="text-sm font-medium mt-1">$14.00</p>
+</div>
+</div>
+</div>
+<div class="space-y-4 border-t border-outline-variant pt-6">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Subtotal</span>
+<span class="font-medium">$74.40</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Shipping</span>
+<span class="text-emerald-700 font-bold">FREE</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant">Estimated Tax</span>
+<span class="font-medium">$9.92</span>
+</div>
+<div class="flex justify-between text-xl font-extrabold text-primary pt-2">
+<span>Total</span>
+<span>$84.32</span>
+</div>
+</div>
+<div class="mt-8 p-4 bg-tertiary-fixed rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">eco</span>
+<p class="text-xs text-on-tertiary-fixed font-medium leading-tight">
+                        Your order supports 4 local independent farms in the Portland area.
+                    </p>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer (Shell Rule) -->
+<footer class="bg-zinc-100 dark:bg-zinc-950 w-full mt-20 border-t border-zinc-200">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 py-12 max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-2">
+<div class="font-['Plus_Jakarta_Sans'] font-black text-emerald-800 text-2xl mb-4">Harvest Market</div>
+<p class="text-sm text-zinc-500 max-w-xs leading-relaxed">Bringing the farm-to-table experience directly to your doorstep with modern convenience and sustainable roots.</p>
+</div>
+<div>
+<h4 class="font-['Manrope'] text-xs uppercase tracking-widest text-emerald-900 font-bold mb-4">Help &amp; Info</h4>
+<ul class="space-y-2 text-xs uppercase tracking-widest text-zinc-500">
+<li class="hover:text-emerald-600 cursor-pointer">About Us</li>
+<li class="hover:text-emerald-600 cursor-pointer">Shipping Policy</li>
+<li class="hover:text-emerald-600 cursor-pointer">Sustainability</li>
+</ul>
+</div>
+<div>
+<h4 class="font-['Manrope'] text-xs uppercase tracking-widest text-emerald-900 font-bold mb-4">Support</h4>
+<ul class="space-y-2 text-xs uppercase tracking-widest text-zinc-500">
+<li class="hover:text-emerald-600 cursor-pointer">Contact Support</li>
+<li class="hover:text-emerald-600 cursor-pointer">Privacy</li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-6 border-t border-zinc-200 text-[10px] uppercase tracking-widest text-zinc-400 text-center">
+            © 2024 Harvest Market. Grown with love.
+        </div>
+</footer>
+</body></html>

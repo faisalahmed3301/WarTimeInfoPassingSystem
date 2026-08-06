@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Harvest Market | Fresh Local Produce</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary": "#ffffff",
+              "background": "#f8f9fa",
+              "on-secondary-fixed-variant": "#653d1e",
+              "tertiary": "#713900",
+              "surface-container-highest": "#e1e3e4",
+              "on-primary": "#ffffff",
+              "on-primary-container": "#a8e7c5",
+              "inverse-surface": "#2e3132",
+              "surface-variant": "#e1e3e4",
+              "inverse-primary": "#95d4b3",
+              "on-surface-variant": "#404943",
+              "outline-variant": "#bfc9c1",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed": "#301400",
+              "primary-container": "#2d6a4f",
+              "inverse-on-surface": "#f0f1f2",
+              "on-tertiary-container": "#ffd1b1",
+              "primary-fixed": "#b1f0ce",
+              "on-error-container": "#93000a",
+              "secondary-container": "#fdc39a",
+              "on-primary-fixed-variant": "#0e5138",
+              "surface-bright": "#f8f9fa",
+              "secondary-fixed": "#ffdcc5",
+              "secondary-fixed-dim": "#f4bb92",
+              "on-secondary-container": "#794e2e",
+              "outline": "#707973",
+              "tertiary-fixed-dim": "#ffb780",
+              "on-tertiary-fixed": "#2f1400",
+              "on-tertiary": "#ffffff",
+              "surface-container-low": "#f3f4f5",
+              "on-primary-fixed": "#002114",
+              "error-container": "#ffdad6",
+              "secondary": "#805533",
+              "surface-tint": "#2c694e",
+              "on-background": "#191c1d",
+              "primary": "#0f5238",
+              "tertiary-container": "#8f4f14",
+              "surface-container-high": "#e7e8e9",
+              "error": "#ba1a1a",
+              "surface-dim": "#d9dadb",
+              "primary-fixed-dim": "#95d4b3",
+              "tertiary-fixed": "#ffdcc4",
+              "on-tertiary-fixed-variant": "#6f3800",
+              "surface": "#f8f9fa",
+              "surface-container": "#edeeef",
+              "on-surface": "#191c1d",
+              "on-error": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .premium-gradient-btn {
+        background: linear-gradient(135deg, #0f5238 0%, #2d6a4f 100%);
+      }
+      .botanical-shadow {
+        box-shadow: 0 20px 40px rgba(25, 28, 29, 0.04);
+      }
+      .glass-nav {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .list-view .product-card {
+        grid-column: span 3;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        align-items: center;
+      }
+      .list-view .product-card .image-container {
+        width: 200px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+      }
+      .list-view .product-card .content-container {
+        flex: 1;
+      }
+      @media (max-width: 1280px) {
+        .list-view .product-card { grid-column: span 2; }
+      }
+      @media (max-width: 640px) {
+        .list-view .product-card { grid-column: span 1; flex-direction: column; align-items: stretch; }
+        .list-view .product-card .image-container { width: 100%; }
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Toast Container -->
+<div class="fixed bottom-6 right-6 z-[100] flex flex-col gap-2 pointer-events-none" id="toast-container"></div>
+<!-- Top Navigation -->
+<nav class="sticky top-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold text-emerald-900 italic font-headline tracking-tight">Harvest Market</span>
+<div class="hidden md:flex gap-6">
+<a class="text-emerald-700 font-bold border-b-2 border-emerald-700 pb-1 font-headline tracking-tight transition-all duration-300" href="#">Shop All</a>
+<a class="text-zinc-600 hover:text-emerald-600 font-headline tracking-tight transition-all duration-300" href="#">Fresh Produce</a>
+<a class="text-zinc-600 hover:text-emerald-600 font-headline tracking-tight transition-all duration-300" href="#">Pantry</a>
+<a class="text-zinc-600 hover:text-emerald-600 font-headline tracking-tight transition-all duration-300" href="#">Dairy</a>
+<a class="text-zinc-600 hover:text-emerald-600 font-headline tracking-tight transition-all duration-300" href="#">Bakery</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-surface-container-highest px-4 py-2 rounded-lg gap-2">
+<span class="material-symbols-outlined text-zinc-500">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-body" placeholder="Search harvest..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="relative p-2 hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">
+<span class="material-symbols-outlined text-emerald-800" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity" id="cart-counter">0</span>
+</button>
+<button class="p-2 hover:opacity-80 transition-all duration-300 scale-95 active:scale-90"><span class="material-symbols-outlined text-emerald-800" data-icon="person">person</span></button>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto flex gap-8 px-6 mt-8">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex flex-col gap-2 p-4 h-full w-64 border-r border-zinc-200 font-body text-sm">
+<div class="mb-6 px-4">
+<h2 class="text-lg font-bold text-emerald-900 font-headline">Categories</h2>
+<p class="text-zinc-500 text-xs uppercase tracking-widest font-label mt-1">Browse by aisle</p>
+</div>
+<div class="space-y-1" id="category-filters">
+<button class="category-btn w-full flex items-center gap-3 px-4 py-3 bg-emerald-100 text-emerald-900 rounded-lg font-semibold hover:translate-x-1 transition-transform duration-200" data-category="all">
+<span class="material-symbols-outlined" data-icon="list">list</span>
+<span>All Products</span>
+</button>
+<button class="category-btn w-full flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-100 rounded-lg hover:translate-x-1 transition-transform duration-200" data-category="produce">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+<span>Organic Fruits</span>
+</button>
+<button class="category-btn w-full flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-100 rounded-lg hover:translate-x-1 transition-transform duration-200" data-category="produce">
+<span class="material-symbols-outlined" data-icon="psychology_alt">psychology_alt</span>
+<span>Seasonal Veggies</span>
+</button>
+<button class="category-btn w-full flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-100 rounded-lg hover:translate-x-1 transition-transform duration-200" data-category="pantry">
+<span class="material-symbols-outlined" data-icon="Bakery_Dining">bakery_dining</span>
+<span>Local Honey</span>
+</button>
+<button class="category-btn w-full flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-100 rounded-lg hover:translate-x-1 transition-transform duration-200" data-category="bakery">
+<span class="material-symbols-outlined" data-icon="Breakfast_Dining">breakfast_dining</span>
+<span>Artisan Bread</span>
+</button>
+<button class="category-btn w-full flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-100 rounded-lg hover:translate-x-1 transition-transform duration-200" data-category="dairy">
+<span class="material-symbols-outlined" data-icon="Water_Drop">water_drop</span>
+<span>Grass-fed Dairy</span>
+</button>
+</div>
+<div class="mt-12 px-4 space-y-6">
+<div>
+<h3 class="font-headline font-bold text-on-surface mb-3">Price Range</h3>
+<input class="w-full accent-primary h-1 bg-surface-container-highest rounded-lg appearance-none cursor-pointer" id="price-slider" max="50" min="0" type="range" value="50"/>
+<div class="flex justify-between mt-2 text-xs text-zinc-500 font-label">
+<span>$0</span>
+<span id="price-label">Up to $50</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Product Grid Area -->
+<section class="flex-1">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+<div>
+<h1 class="text-4xl font-extrabold font-headline tracking-tight text-on-background">Fresh Harvest</h1>
+<p class="text-on-surface-variant mt-2 max-w-lg">Sourced from local farms within 50 miles. Hand-picked at peak ripeness for your kitchen.</p>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low p-1 rounded-lg">
+<button class="view-toggle px-4 py-2 text-sm font-semibold rounded-md bg-white shadow-sm text-primary" id="grid-view-btn">Grid View</button>
+<button class="view-toggle px-4 py-2 text-sm font-semibold text-zinc-500 hover:text-primary transition-colors" id="list-view-btn">List View</button>
+</div>
+</div>
+<!-- Bento Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 transition-all duration-300" id="product-grid">
+<!-- Product Card 1 -->
+<div class="product-card group relative bg-surface-container-lowest rounded-xl p-4 transition-all duration-300 hover:scale-[1.02] botanical-shadow border border-transparent hover:border-outline-variant/15" data-category="produce" data-price="4.99">
+<div class="image-container aspect-square rounded-lg overflow-hidden mb-4 bg-surface relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="close-up of vibrant organic heritage tomatoes on a rustic wooden table with soft morning sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3-ht8OFP3V8k9fSvRX4XnKLLR7RnWbRsBzOLEjs6Y6iJuUfLh9_61ENCG-myubu0OjJRvjJwkUD8SloExLQOnFYIz7negLvs66qE9HCOITibCOUSC8IcLlEIyJSQrqSLmIEJLFfsZ__CiQlsXu-GwePMCHR5H4_0XeGP1_cdZFX6xdmHzINDZIinpPqmqpObiPKZsqF5-2RrVRFXJ4dCCF1jQQwb2xmReQDMve7zzRwP2bB9gmbPYHWjuU0mtmUEkPlKm10QSX8xU"/>
+<span class="absolute top-2 left-2 px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-bold uppercase tracking-widest rounded-full">Produce</span>
+</div>
+<div class="content-container space-y-1">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold font-headline leading-tight text-on-surface">Heritage Heirloom Tomatoes</h3>
+<span class="text-primary font-bold">$4.99</span>
+</div>
+<p class="text-xs text-zinc-500 font-label italic">1 lb / approx. 3 units</p>
+<p class="text-sm text-on-surface-variant line-clamp-2 mt-2">Sun-ripened, multi-colored heirlooms with a rich, complex sweetness perfect for caprese.</p>
+<div class="pt-4 flex items-center gap-2">
+<button class="add-to-cart flex-1 premium-gradient-btn text-on-primary py-2.5 rounded-lg text-sm font-bold shadow-sm active:scale-95 transition-transform" data-name="Heirloom Tomatoes">Add to Cart</button>
+<button class="p-2.5 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="product-card group relative bg-surface-container-lowest rounded-xl p-4 transition-all duration-300 hover:scale-[1.02] botanical-shadow border border-transparent hover:border-outline-variant/15" data-category="bakery" data-price="7.50">
+<div class="image-container aspect-square rounded-lg overflow-hidden mb-4 bg-surface relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="artisan sourdough bread loaf with beautiful crust scoring on a clean grey surface with flour dusting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_hNg3gFN9wJLTjfUMBhU2cOcHZs7A7PaZd7GbgjaImI3TfLgadMbSxl0PfdZS0DbAu5mtHXD5PCgO78n6OwWqb6Xeo_OFdr_FgJTVuCRWsCtwZPYxO1742FFWHHR49A1QpsRtN5hGwSfG-uA08kiluXYf0auBhrhVVYggPRelPfCj7sB8tycM8B1OfZIfb8TVSKdwcPFFpGj6NbKaQlm6nChJhtWEB_XMuxbUz6UcOl8cJswZxSAwoXEaccKmd_qJ2QBpWYEPAqCN"/>
+<span class="absolute top-2 left-2 px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-widest rounded-full">Bakery</span>
+</div>
+<div class="content-container space-y-1">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold font-headline leading-tight text-on-surface">Artisan Sourdough Loaf</h3>
+<span class="text-primary font-bold">$7.50</span>
+</div>
+<p class="text-xs text-zinc-500 font-label italic">800g / Freshly Baked</p>
+<p class="text-sm text-on-surface-variant line-clamp-2 mt-2">72-hour cold fermented loaf with a crisp dark crust and airy, slightly tangy crumb.</p>
+<div class="pt-4 flex items-center gap-2">
+<button class="add-to-cart flex-1 premium-gradient-btn text-on-primary py-2.5 rounded-lg text-sm font-bold shadow-sm active:scale-95 transition-transform" data-name="Sourdough Loaf">Add to Cart</button>
+<button class="p-2.5 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="product-card group relative bg-surface-container-lowest rounded-xl p-4 transition-all duration-300 hover:scale-[1.02] botanical-shadow border border-transparent hover:border-outline-variant/15" data-category="pantry" data-price="12.00">
+<div class="image-container aspect-square rounded-lg overflow-hidden mb-4 bg-surface relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="golden local honey being drizzled from a wooden dipper into a crystal jar with honeycomb pieces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP0R0KWUSTlwh03ewIEmsB0OpXJR3H3RC_B85K_pWnvd3XzcRBk6BGthSdUVMixo2PCBKLcFFH3INE2izms4nSJZ4NqZMNomJaK-8R1tfvxQJW7E_ec1eIYzQ5qJNzwoE5qYqS632At2o5WUju6Qke6iQ6i-McV_UZ2QU8YJbQ4DkCOtTA-0rxGuYFi4BeSE-xQQfxYeV5irgdrlHBsJl1FJzlpPnkiiw6uTldOCjlViEpcq2KuKYso96NkpcZMF8lzvlhGaHHzNCs"/>
+<span class="absolute top-2 left-2 px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold uppercase tracking-widest rounded-full">Pantry</span>
+<div class="absolute top-2 right-2 bg-tertiary-container text-on-tertiary-container px-2 py-1 rounded text-[10px] font-black uppercase tracking-tighter">Season's Best</div>
+</div>
+<div class="content-container space-y-1">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold font-headline leading-tight text-on-surface">Wildflower Local Honey</h3>
+<span class="text-primary font-bold">$12.00</span>
+</div>
+<p class="text-xs text-zinc-500 font-label italic">12oz / Raw Unfiltered</p>
+<p class="text-sm text-on-surface-variant line-clamp-2 mt-2">Harvested from wildflower meadows in the nearby valley. Naturally floral and smooth.</p>
+<div class="pt-4 flex items-center gap-2">
+<button class="add-to-cart flex-1 premium-gradient-btn text-on-primary py-2.5 rounded-lg text-sm font-bold shadow-sm active:scale-95 transition-transform" data-name="Wildflower Honey">Add to Cart</button>
+<button class="p-2.5 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="product-card group relative bg-surface-container-lowest rounded-xl p-4 transition-all duration-300 hover:scale-[1.02] botanical-shadow border border-transparent hover:border-outline-variant/15" data-category="produce" data-price="2.95">
+<div class="image-container aspect-square rounded-lg overflow-hidden mb-4 bg-surface relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="fresh vibrant kale leaves with water droplets and wooden surface background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvwK0bn8HcaUr-PU2YBq-l_FIW5A87V0DN5pK3f1CGXZ7TFPm_ZLlfPSmUwGpm-cT2Vjc1Cv2dGU7AhBi8tSoWxHyBquMWSr9gHUJThmuVsA9SIsAY40NoCoL5lQpD9ZetcUZAlb790SC6S3QKY2bWbaACGn_6vDYHN1pkaNoiF6kmRGJtxHEK_dlFxauquiTPY6amkm_HxHFHERVJ0Gb0xtAPJro0XK7Hj2shodKdVPmEd_v4jfzKb3GgCiqzsr2YYm1SbT63leZW"/>
+<span class="absolute top-2 left-2 px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-bold uppercase tracking-widest rounded-full">Produce</span>
+</div>
+<div class="content-container space-y-1">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold font-headline leading-tight text-on-surface">Crisp Curly Kale</h3>
+<span class="text-primary font-bold">$2.95</span>
+</div>
+<p class="text-xs text-zinc-500 font-label italic">per bunch / approx. 250g</p>
+<p class="text-sm text-on-surface-variant line-clamp-2 mt-2">Triple-washed, nutrient-dense curly kale. Grown using organic regenerative methods.</p>
+<div class="pt-4 flex items-center gap-2">
+<button class="add-to-cart flex-1 premium-gradient-btn text-on-primary py-2.5 rounded-lg text-sm font-bold shadow-sm active:scale-95 transition-transform" data-name="Curly Kale">Add to Cart</button>
+<button class="p-2.5 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="product-card group relative bg-surface-container-lowest rounded-xl p-4 transition-all duration-300 hover:scale-[1.02] botanical-shadow border border-transparent hover:border-outline-variant/15" data-category="dairy" data-price="6.45">
+<div class="image-container aspect-square rounded-lg overflow-hidden mb-4 bg-surface relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="glass bottle of fresh whole milk with condensation on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLQE2ukwJvQtcHngDKIUJ_w66J44KPFmkgkPfpz-mpspmfkBxn30po2RPlTUFuidnnWEoAe2PKk0EvotsSldIMRbXtqVhUT2MXxzzi1ZnN6tChVWGXlIZzLfYvGCTgmXxVbyjGORCRIQCym_Pywdurx7DyE6cXfKPQR8iKlgLHUU3uUJLT7l7Ng6YETVZa5fThLt2R5O1Qrdzikc3RK-BiNYr0uuYUGvezl6p5UgPFSSw0S7PHWrfu297rWfZwROEs8bvot-iUAWER"/>
+<span class="absolute top-2 left-2 px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-bold uppercase tracking-widest rounded-full">Dairy</span>
+</div>
+<div class="content-container space-y-1">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold font-headline leading-tight text-on-surface">A2 Whole Jersey Milk</h3>
+<span class="text-primary font-bold">$6.45</span>
+</div>
+<p class="text-xs text-zinc-500 font-label italic">1 Liter / Glass Bottle</p>
+<p class="text-sm text-on-surface-variant line-clamp-2 mt-2">Creamy, nutrient-rich whole milk from grass-fed Jersey cows. Non-homogenized.</p>
+<div class="pt-4 flex items-center gap-2">
+<button class="add-to-cart flex-1 premium-gradient-btn text-on-primary py-2.5 rounded-lg text-sm font-bold shadow-sm active:scale-95 transition-transform" data-name="Jersey Milk">Add to Cart</button>
+<button class="p-2.5 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="product-card group relative bg-surface-container-lowest rounded-xl p-4 transition-all duration-300 hover:scale-[1.02] botanical-shadow border border-transparent hover:border-outline-variant/15" data-category="dairy" data-price="8.20">
+<div class="image-container aspect-square rounded-lg overflow-hidden mb-4 bg-surface relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="six brown farm fresh eggs in a cardboard carton on a burlap sack" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHg1D5WVdpBM173v6mskOQ-ql2slmnFKVF9eWN_2yLqTcp44IEOXAgn5DpUhqUyhXRf2j_CHs_LRD-7H_Ok3mFFfCXwP_J2soYAU36i_RLYmwvgb3nNPQRWvd9XfgfrbLf_XY_cHd87x0GmktDC9rKvKth0FwRKiP-US8auObTUqDVmymDXarKAM9FZiu-2IuJf7MZVgARGHJ6B-fXalvNvZz3mfJ6Px-fVrfxiapQ7d-RkIuLRwZJaqsONJpj5rlYU2WBaJcO0Yyg"/>
+<span class="absolute top-2 left-2 px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-bold uppercase tracking-widest rounded-full">Dairy</span>
+</div>
+<div class="content-container space-y-1">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold font-headline leading-tight text-on-surface">Pasture-Raised Eggs</h3>
+<span class="text-primary font-bold">$8.20</span>
+</div>
+<p class="text-xs text-zinc-500 font-label italic">Dozen / Farm Fresh</p>
+<p class="text-sm text-on-surface-variant line-clamp-2 mt-2">Rich orange yolks from hens that forage freely on green pasture all day.</p>
+<div class="pt-4 flex items-center gap-2">
+<button class="add-to-cart flex-1 premium-gradient-btn text-on-primary py-2.5 rounded-lg text-sm font-bold shadow-sm active:scale-95 transition-transform" data-name="Pasture-Raised Eggs">Add to Cart</button>
+<button class="p-2.5 rounded-lg bg-secondary-fixed text-on-secondary-fixed hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-lg">favorite</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination or Load More -->
+<div class="mt-16 flex justify-center">
+<button class="group flex items-center gap-2 px-8 py-3 rounded-full border border-outline text-primary font-bold hover:bg-primary hover:text-white transition-all duration-300">
+                    Discover More
+                    <span class="material-symbols-outlined group-hover:translate-y-1 transition-transform">keyboard_arrow_down</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-20 border-t border-zinc-200 bg-zinc-100 font-body text-xs uppercase tracking-widest">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 py-12 max-w-7xl mx-auto">
+<div class="space-y-4">
+<span class="font-['Plus_Jakarta_Sans'] font-black text-emerald-800 text-xl tracking-tighter">Harvest Market</span>
+<p class="normal-case text-zinc-500 leading-relaxed tracking-normal mt-4">Curating the finest local and organic produce for a healthier community. Directly from farm to your table.</p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-bold text-emerald-900 mb-2">Shop</span>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">About Us</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Sustainability</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Local Farmers</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-bold text-emerald-900 mb-2">Support</span>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Shipping Policy</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Contact Support</a>
+<a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Privacy</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-bold text-emerald-900 mb-2">Newsletter</span>
+<p class="normal-case text-zinc-500 tracking-normal mb-4">Join for weekly harvest updates and recipes.</p>
+<div class="flex bg-white rounded-lg p-1 border border-zinc-200">
+<input class="bg-transparent border-none focus:ring-0 flex-1 px-3 normal-case tracking-normal" placeholder="Email" type="email"/>
+<button class="bg-primary text-white px-4 py-2 rounded-md font-bold text-[10px]">Join</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-6 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-500">
+<span>© 2024 Harvest Market. Grown with love.</span>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-lg cursor-pointer hover:text-primary transition-colors">language</span>
+<span class="material-symbols-outlined text-lg cursor-pointer hover:text-primary transition-colors">eco</span>
+<span class="material-symbols-outlined text-lg cursor-pointer hover:text-primary transition-colors">nutrition</span>
+</div>
+</div>
+</footer>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productCards = document.querySelectorAll('.product-card');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const priceSlider = document.getElementById('price-slider');
+            const priceLabel = document.getElementById('price-label');
+            const gridViewBtn = document.getElementById('grid-view-btn');
+            const listViewBtn = document.getElementById('list-view-btn');
+            const productGrid = document.getElementById('product-grid');
+            const cartCounter = document.getElementById('cart-counter');
+            const toastContainer = document.getElementById('toast-container');
+            
+            let currentCartCount = 0;
+            let currentCategory = 'all';
+            let currentPrice = 50;
+
+            // --- Filtering Logic ---
+            function applyFilters() {
+                productCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    const price = parseFloat(card.getAttribute('data-price'));
+                    
+                    const categoryMatch = currentCategory === 'all' || category === currentCategory;
+                    const priceMatch = price <= currentPrice;
+
+                    if (categoryMatch && priceMatch) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            // Category Filter Click
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update UI state
+                    categoryBtns.forEach(b => {
+                        b.classList.remove('bg-emerald-100', 'text-emerald-900', 'font-semibold');
+                        b.classList.add('text-zinc-500');
+                    });
+                    btn.classList.add('bg-emerald-100', 'text-emerald-900', 'font-semibold');
+                    btn.classList.remove('text-zinc-500');
+
+                    currentCategory = btn.getAttribute('data-category');
+                    applyFilters();
+                });
+            });
+
+            // Price Range Slider
+            priceSlider.addEventListener('input', (e) => {
+                currentPrice = parseFloat(e.target.value);
+                priceLabel.textContent = `Up to $${currentPrice}${currentPrice === 50 ? '+' : ''}`;
+                applyFilters();
+            });
+
+            // --- View Toggle Logic ---
+            gridViewBtn.addEventListener('click', () => {
+                productGrid.classList.remove('list-view');
+                gridViewBtn.classList.add('bg-white', 'shadow-sm', 'text-primary');
+                gridViewBtn.classList.remove('text-zinc-500');
+                listViewBtn.classList.remove('bg-white', 'shadow-sm', 'text-primary');
+                listViewBtn.classList.add('text-zinc-500');
+            });
+
+            listViewBtn.addEventListener('click', () => {
+                productGrid.classList.add('list-view');
+                listViewBtn.classList.add('bg-white', 'shadow-sm', 'text-primary');
+                listViewBtn.classList.remove('text-zinc-500');
+                gridViewBtn.classList.remove('bg-white', 'shadow-sm', 'text-primary');
+                gridViewBtn.classList.add('text-zinc-500');
+            });
+
+            // --- Cart & Toast Logic ---
+            function showToast(productName) {
+                const toast = document.createElement('div');
+                toast.className = 'bg-primary text-white px-4 py-3 rounded-lg shadow-xl flex items-center gap-3 animate-bounce-short transition-all duration-300 opacity-0 transform translate-y-4';
+                toast.innerHTML = `
+                    <span class="material-symbols-outlined text-sm">check_circle</span>
+                    <span class="text-sm font-semibold">${productName} added to cart</span>
+                `;
+                
+                toastContainer.appendChild(toast);
+                
+                // Animate in
+                setTimeout(() => {
+                    toast.classList.remove('opacity-0', 'translate-y-4');
+                }, 10);
+
+                // Auto remove
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'translate-y--4');
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            }
+
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const name = btn.getAttribute('data-name');
+                    currentCartCount++;
+                    cartCounter.textContent = currentCartCount;
+                    cartCounter.classList.remove('opacity-0');
+                    
+                    showToast(name);
+                    
+                    // Small visual feedback on button
+                    const originalText = btn.textContent;
+                    btn.textContent = 'Added!';
+                    btn.classList.add('opacity-90');
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.classList.remove('opacity-90');
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+<style>
+        @keyframes bounce-short {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .animate-bounce-short {
+            animation: bounce-short 0.4s ease-out 1;
+        }
+    </style>
+</body></html>

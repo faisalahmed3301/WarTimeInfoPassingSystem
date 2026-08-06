@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Harvest Market | Fresh Local Groceries</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .botanical-shadow {
+            box-shadow: 0 20px 40px rgba(25, 28, 29, 0.04);
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .product-card:hover .quick-add-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(-5%); }
+            50% { transform: translateY(0); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 3s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-secondary": "#ffffff",
+                "background": "#f8f9fa",
+                "on-secondary-fixed-variant": "#653d1e",
+                "tertiary": "#713900",
+                "surface-container-highest": "#e1e3e4",
+                "on-primary": "#ffffff",
+                "on-primary-container": "#a8e7c5",
+                "inverse-surface": "#2e3132",
+                "surface-variant": "#e1e3e4",
+                "inverse-primary": "#95d4b3",
+                "on-surface-variant": "#404943",
+                "outline-variant": "#bfc9c1",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-fixed": "#301400",
+                "primary-container": "#2d6a4f",
+                "inverse-on-surface": "#f0f1f2",
+                "on-tertiary-container": "#ffd1b1",
+                "primary-fixed": "#b1f0ce",
+                "on-error-container": "#93000a",
+                "secondary-container": "#fdc39a",
+                "on-primary-fixed-variant": "#0e5138",
+                "surface-bright": "#f8f9fa",
+                "secondary-fixed": "#ffdcc5",
+                "secondary-fixed-dim": "#f4bb92",
+                "on-secondary-container": "#794e2e",
+                "outline": "#707973",
+                "tertiary-fixed-dim": "#ffb780",
+                "on-tertiary-fixed": "#2f1400",
+                "on-tertiary": "#ffffff",
+                "surface-container-low": "#f3f4f5",
+                "on-primary-fixed": "#002114",
+                "error-container": "#ffdad6",
+                "secondary": "#805533",
+                "surface-tint": "#2c694e",
+                "on-background": "#191c1d",
+                "primary": "#0f5238",
+                "tertiary-container": "#8f4f14",
+                "surface-container-high": "#e7e8e9",
+                "error": "#ba1a1a",
+                "surface-dim": "#d9dadb",
+                "primary-fixed-dim": "#95d4b3",
+                "tertiary-fixed": "#ffdcc4",
+                "on-tertiary-fixed-variant": "#6f3800",
+                "surface": "#f8f9fa",
+                "surface-container": "#edeeef",
+                "on-surface": "#191c1d",
+                "on-error": "#ffffff"
+              },
+              fontFamily: {
+                "headline": ["Plus Jakarta Sans"],
+                "body": ["Manrope"],
+                "label": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.5rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-surface font-body">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-sm">
+<nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<a class="text-2xl font-bold text-emerald-900 italic font-headline tracking-tight" href="#">Harvest Market</a>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-emerald-700 font-bold border-b-2 border-emerald-700 pb-1 font-headline tracking-tight" href="#">Shop All</a>
+<a class="text-zinc-600 hover:text-emerald-600 transition-colors font-headline tracking-tight" href="#">Fresh Produce</a>
+<a class="text-zinc-600 hover:text-emerald-600 transition-colors font-headline tracking-tight" href="#">Pantry</a>
+<a class="text-zinc-600 hover:text-emerald-600 transition-colors font-headline tracking-tight" href="#">Dairy</a>
+<a class="text-zinc-600 hover:text-emerald-600 transition-colors font-headline tracking-tight" href="#">Bakery</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-highest border-none rounded-full text-sm focus:ring-2 focus:ring-primary w-64 transition-all" id="search-bar" placeholder="Search harvest..." type="text"/>
+<!-- Search Results Mock Dropdown -->
+<div class="absolute top-full left-0 mt-2 w-full bg-white rounded-xl shadow-xl border border-zinc-100 hidden z-50 overflow-hidden" id="search-results">
+<ul class="max-h-60 overflow-y-auto" id="results-list"></ul>
+</div>
+</div>
+<button class="p-2 hover:opacity-80 transition-all duration-300 scale-95 active:scale-90 relative">
+<span class="material-symbols-outlined text-emerald-800">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden" id="cart-counter">0</span>
+</button>
+<button class="p-2 hover:opacity-80 transition-all duration-300 scale-95 active:scale-90">
+<span class="material-symbols-outlined text-emerald-800">person</span>
+</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-[870px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover brightness-[0.85]" data-alt="Sun-drenched farmers market stall with vibrant organic vegetables, rustic wooden crates, and soft afternoon light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiLg-Hco2vopk9DvKqEGyzgbTS8CojviH2tgSWAXsrCCHu6ss_h67AER4IRTiZoRlwjiVRzI7zjSm8aJ8kKOrz1lawKtpLLvqdJbWJ5hXSKblhWzByFIdVIMSWCItq7xu6FA-9L1bmfjEbstS9GVavAif5LNsVaGXI6k_v1XsBacgZAfcFQ9HASMJ0TfJqzbeetBtWf3DklpyFbbOrjnW3XGA7LVrJeLHBRHdYCKecFb3YPlu4nxdXDx7A5Qg6h0I-Pxwe5KV4GXPQ"/>
+<div class="absolute inset-0 bg-gradient-to-r from-on-primary-fixed/60 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+<div class="max-w-2xl">
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-label font-bold tracking-widest uppercase mb-6">
+                    Locally Sourced • Seasonally Fresh
+                </span>
+<h1 class="text-6xl md:text-7xl font-headline font-extrabold text-white leading-tight tracking-tighter mb-6">
+                    The Soul of the <br/><span class="text-primary-fixed italic">Modern Garden.</span>
+</h1>
+<p class="text-lg text-white/90 mb-10 font-body max-w-lg leading-relaxed">
+                    Skip the industrial aisles. Experience the tactile beauty of artisan produce delivered straight from our community's soil to your kitchen.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded font-bold hover:scale-105 transition-transform botanical-shadow" onclick="scrollToArrivals()">
+                        Shop Fresh Arrivals
+                    </button>
+<button class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded font-bold hover:bg-white/20 transition-all">
+                        Meet Our Farmers
+                    </button>
+</div>
+</div>
+</div>
+<!-- Floating Product Detail -->
+<div class="absolute bottom-12 right-12 hidden lg:block max-w-xs animate-bounce-slow">
+<div class="bg-white/80 backdrop-blur-xl p-4 rounded-xl botanical-shadow flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close-up of a perfectly ripe, fuzzy peach with water droplets on a rustic stone background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvdzWCuBDXSw-4wQcLxiQSQDOe-k3XRPLa_BKqpV59UGpqeC_4SQa3JKFskQNaA5_N8YO59ohnxuMe9VsjH4_-4msveUV0Bsjfag6H7SETQCt41tv9HNLYIuA6eWSb8xMY8Nuvz4QyjydzSKnMdifWF5lZ5pRtegCOjGrrsM1ackWw0p98G32loezjIy2UOIT_-fT6Ht4ExxfPDRsodPeeGxWIjympwe_72GE0Ow9goTxfBwOBPSqjWuUVXl0Y_ctzw3ablcSA60yV"/>
+</div>
+<div>
+<p class="text-[10px] text-tertiary-container font-bold uppercase tracking-wider">In Season Now</p>
+<p class="font-headline font-bold text-on-surface">Heirloom Peaches</p>
+<p class="text-sm text-primary font-bold">$4.99 / lb</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Categories Bento Grid -->
+<section class="py-24 max-w-7xl mx-auto px-6">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-4xl font-headline font-extrabold text-on-surface tracking-tight mb-2">Curated Aisles</h2>
+<p class="text-on-surface-variant font-medium">Hand-selected quality in every category.</p>
+</div>
+<a class="text-primary font-bold flex items-center gap-2 hover:underline" href="#">
+                View Catalog <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+<!-- Organic Fruits -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-low transition-all hover:scale-[1.01] hover:surface-bright botanical-shadow">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Top down view of various citrus fruits sliced on a teal ceramic plate with dramatic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1eAWaNj4UYvanPzxDc6stowb7sSXBdVPJGfz7dNh2uYhk50gXZDgtIt4R2afpi1MnXE2tzWElT0kv7PhtUd2QFV1K2BCuN3IrhBrSV9ehnY4LvyPUGGouA6xPp-H_MBk5zZ2xBiPkg0sP9SGl4nW8KIDNGY4YdLZv1OdZ6iaLL8Ump4ryUue15P4iTMm6MEf3zVOYIr9Gdra2uVOrJBTGTsSozacZMtrhLgeyWd_4c9iVhiiw0yWOMmf77CW7vInFMYSrNJ5SHxHr"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 text-white">
+<span class="px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold rounded-full uppercase tracking-widest mb-3 inline-block">Fresh</span>
+<h3 class="text-3xl font-headline font-extrabold">Organic Fruits</h3>
+<p class="text-white/80 mt-2 font-medium">Orchard-fresh heirloom varieties.</p>
+</div>
+</div>
+<!-- Seasonal Veggies -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container-low transition-all hover:scale-[1.01] botanical-shadow">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Diverse selection of dark leafy greens and root vegetables on a light neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiN_DzjjkJtqecqaAVLv6H63oLJo2VaxgEQlN-D0Q4_pMdSiEad3AQpn74xNvoIeNcHaRGKaIHOoFuVQ6TD5pXD2focPsvC0Q3NoQqtb3F7ozlTS1d0MXCIZ0DO_wLej8J8I8EtZONT8C0_dlQ7Xyj8SZfM_Z4UUT10LhGIXFWgaPreULMNafnM2eQd1azePc0KvuzdYBy3PTRouRgk9x3qXOPRav_g1hCsdY-1aOMqFVrC2qJS-68YuYT_RYoQg2LIwqF_qZ8ruRL"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 text-white">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase tracking-widest mb-3 inline-block">Local</span>
+<h3 class="text-2xl font-headline font-extrabold">Market Veggies</h3>
+</div>
+</div>
+<!-- Artisan Bread -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-surface-container-low transition-all hover:scale-[1.01] botanical-shadow">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Freshly baked artisan sourdough loaf on a flour-dusted dark wooden surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDekVVxJe4TnLNMFjgaXT45kF-xNrcE-i5veQ5aVexJAgnOls7mJVXZPO7jZOG2rUbyYd7Fy-bY-5a3b9B8XWcrVTR5S8TViArjAKnakJoMnnUUa6tDS1A2Z5_iyLHgK1g1PCHJ5P6keF8ZwC9kF_6C6SFXGk944xcxdOcPSpFDmevUlb6E9xxpoFxqL3SYatzNU9yQfVIZq00y5bCrUtmBxpgJG31qM6kmMm0SSE6AVIeO799rhLtsmX9EcIaYndHOBbMgYlJ_E81p"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 text-white">
+<h3 class="text-2xl font-headline font-extrabold">Artisan Bread</h3>
+</div>
+</div>
+<!-- Pantry Essentials -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-low transition-all hover:scale-[1.01] botanical-shadow">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Minimalist pantry shelves with aesthetic jars of spices, grains, and olive oils" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCARPLU50-dvIeFCLPtrgEamNTfw_qFlYxLss11Ut6MleV-AvrZh_5DRN6JQTM37L3qeq3nNdq3tujugEdTxAZ15PJuzPJmspabhLKYGRRGSKaJj_9iwCn0c5Fm0NWwMn4laEermdpFs0RdzMpVhwKxo6T2-cQzc_gWVgoI34DZcSdHJMvO_0eOQZEbp_wmLL6PEu2wyYsKwYUp3ZdX_2SkaFupMGkcRmWMO5aCeUTzRwsGCN4D7jpFe8aliW9ljUp90lSeNxawLCQG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 text-white">
+<h3 class="text-3xl font-headline font-extrabold">Earthy Pantry</h3>
+<p class="text-white/80 mt-2 font-medium">Small-batch condiments and dry goods.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Fresh Arrivals / Product Grid -->
+<section class="py-24 bg-surface-container-low" id="arrivals">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-headline font-extrabold text-on-surface tracking-tight mb-4">Just Harvested</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto">Our daily arrivals from regional farms, picked at peak ripeness and ready for your table.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Product 1 -->
+<div class="product-card group relative bg-surface-container-lowest p-4 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/5">
+<div class="relative h-64 mb-6 rounded-lg overflow-hidden bg-surface">
+<img class="w-full h-full object-cover" data-alt="A cluster of bright red cherry tomatoes on a green vine over a textured grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_iP71k_hU-5O6gGMh1_8p9W7DMRM4aUqw6sUwy-G0G86i_0dEIzXti97IEYl3wA69DSS9jBWMGWkl3Ju9GB1h1AYaCe8uBI7IN9OX8HyqDtWZjVWVBFJdLZktKqHrVb9rqUX6W_oMUC08VafxAHokNTJrbjMQu7lKwvVXGkEz-w5-RtoUwWvRyMkue-QKyN4X4Gp6WSz7Gaz1-P99MF114jMY5QFzvBJoqX8OH74HX0N31puwv2sF64WIytai6S5_l-PJMAdhRnP4"/>
+<span class="absolute top-3 left-3 px-2 py-1 bg-primary text-on-primary text-[10px] font-bold rounded">ORGANIC</span>
+<!-- Quick Add Overlay -->
+<div class="quick-add-overlay absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 transition-all duration-300 translate-y-4">
+<button class="px-4 py-2 bg-white text-primary font-bold rounded-full shadow-lg hover:bg-primary hover:text-white transition-colors" onclick="addToCart('Heirloom Vine Tomatoes')">Quick Add</button>
+</div>
+</div>
+<p class="text-xs text-secondary font-bold uppercase tracking-widest mb-1">Vegetables</p>
+<h4 class="text-lg font-headline font-bold text-on-surface mb-2">Heirloom Vine Tomatoes</h4>
+<div class="flex justify-between items-center mt-4">
+<span class="text-xl font-extrabold text-primary">$6.45</span>
+<button class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-container hover:bg-primary hover:text-white transition-colors" onclick="addToCart('Heirloom Vine Tomatoes')">
+<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="product-card group relative bg-surface-container-lowest p-4 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/5">
+<div class="relative h-64 mb-6 rounded-lg overflow-hidden bg-surface">
+<img class="w-full h-full object-cover" data-alt="Wooden honeycomb dipper dripping with golden thick honey against a soft cream background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmrfGi_Ns9bnpr3XGZznq5HQSjjGmTtM3_6OUThbET6Ca4poWWGkEtA5EEfidw4LGwiMzdl-D7ZqHu63LFN4HrvlB7eX_5z7hCJyvIxytYuUS-0cajdSmeW0p1THEJf4X7EVmJIiOIGZz7ulwCfbqkGWKmZYq4W1fBaJOgJIn17nTa0aIvFD3PAby7aa89PXitc8pygHKF2hAxnhj7Gpvypm34LWBuEjKYGNEyC6_iDTTWFdXq7dk6vUjAyWo9qJmlucaJ5P7CaR-u"/>
+<!-- Quick Add Overlay -->
+<div class="quick-add-overlay absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 transition-all duration-300 translate-y-4">
+<button class="px-4 py-2 bg-white text-primary font-bold rounded-full shadow-lg hover:bg-primary hover:text-white transition-colors" onclick="addToCart('Wildflower Local Honey')">Quick Add</button>
+</div>
+</div>
+<p class="text-xs text-secondary font-bold uppercase tracking-widest mb-1">Pantry</p>
+<h4 class="text-lg font-headline font-bold text-on-surface mb-2">Wildflower Local Honey</h4>
+<div class="flex justify-between items-center mt-4">
+<span class="text-xl font-extrabold text-primary">$12.99</span>
+<button class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-container hover:bg-primary hover:text-white transition-colors" onclick="addToCart('Wildflower Local Honey')">
+<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="product-card group relative bg-surface-container-lowest p-4 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/5">
+<div class="relative h-64 mb-6 rounded-lg overflow-hidden bg-surface">
+<img class="w-full h-full object-cover" data-alt="A handful of fresh green asparagus spears tied with a twine string on a neutral linen surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfYxLm90IgBzwherHc4vS62ArFEwqagvIEReVPddfxsbRKyBZFy7ef-Scn7fTpezfuOICo7RxZ5IW2PRXPX5rVVQSzOjCooOdvIxxIuG44F1_j_kEmw5bTlEz5eS3sEDFiGedTA0ZLugezf_dnfP5UfJIOUOYe_VyvG9J5uHlCccDM2tR9YvBNZYsnz4m4XUwJd4nkaRJJBKxWVAaxu_jWHrKgtreodNUFNaez3i79NXEuqy1eWbUCVx9yHybsnDOlYhhpYMByN_tr"/>
+<span class="absolute top-3 left-3 px-2 py-1 bg-tertiary text-on-tertiary text-[10px] font-bold rounded">SEASONAL</span>
+<!-- Quick Add Overlay -->
+<div class="quick-add-overlay absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 transition-all duration-300 translate-y-4">
+<button class="px-4 py-2 bg-white text-primary font-bold rounded-full shadow-lg hover:bg-primary hover:text-white transition-colors" onclick="addToCart('Young Green Asparagus')">Quick Add</button>
+</div>
+</div>
+<p class="text-xs text-secondary font-bold uppercase tracking-widest mb-1">Vegetables</p>
+<h4 class="text-lg font-headline font-bold text-on-surface mb-2">Young Green Asparagus</h4>
+<div class="flex justify-between items-center mt-4">
+<span class="text-xl font-extrabold text-primary">$4.20</span>
+<button class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-container hover:bg-primary hover:text-white transition-colors" onclick="addToCart('Young Green Asparagus')">
+<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
+</button>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="product-card group relative bg-surface-container-lowest p-4 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/5">
+<div class="relative h-64 mb-6 rounded-lg overflow-hidden bg-surface">
+<img class="w-full h-full object-cover" data-alt="Bottle of cold fresh milk with drops of condensation and a sprig of mint next to it" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0a_VN44GN90xriYT_UgK1Qcx1KbhoLC5im_Qme6d0n5oe4AdmeTI6YCkLPU9-n0bAfHOa40BkAVk4pYFBuNtCC95BqkgHSfb6hkoqP_9hY40-wKgEdT-_MZJI_fj3sjxKX0GXc7VB7mdwruwEXboRaIik2eUb25JOdy2aZcNbmUMT8iuFkmwqs_bQ8gXUHodjJEr8h_1WTK4jVPBcbE9LqVeNBFb152tqFrHZSe0946L3DuWvsH8N5soQHz-qGQ4Jn7aFGUHfElYk"/>
+<!-- Quick Add Overlay -->
+<div class="quick-add-overlay absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 transition-all duration-300 translate-y-4">
+<button class="px-4 py-2 bg-white text-primary font-bold rounded-full shadow-lg hover:bg-primary hover:text-white transition-colors" onclick="addToCart('Grass-fed Whole Milk')">Quick Add</button>
+</div>
+</div>
+<p class="text-xs text-secondary font-bold uppercase tracking-widest mb-1">Dairy</p>
+<h4 class="text-lg font-headline font-bold text-on-surface mb-2">Grass-fed Whole Milk</h4>
+<div class="flex justify-between items-center mt-4">
+<span class="text-xl font-extrabold text-primary">$5.50</span>
+<button class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-container hover:bg-primary hover:text-white transition-colors" onclick="addToCart('Grass-fed Whole Milk')">
+<span class="material-symbols-outlined text-xl">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 bg-white overflow-hidden">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl font-headline font-extrabold text-on-surface tracking-tight mb-8">What Our <br/><span class="text-secondary italic">Neighbors</span> Say</h2>
+<div class="space-y-8">
+<div class="p-8 rounded-2xl bg-surface-container-low relative">
+<span class="material-symbols-outlined text-secondary-container text-6xl absolute -top-4 -left-4 opacity-50">format_quote</span>
+<p class="text-lg text-on-surface relative z-10 font-medium italic leading-relaxed">
+                                "The quality of the produce here is unmatched. It’s like having a farmers market right around the corner every single day. The seasonal veggies transformed our home cooking."
+                            </p>
+<div class="mt-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-zinc-200">
+<img class="w-full h-full object-cover" data-alt="Portrait of a smiling woman in her 30s with natural soft lighting and a warm blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOjrp_r7Bi13QPX61ou9UjBmMM-APPy95XrsFhTkI1fDBXQrEGRzLPQ2QSBsm_dv_QLfZzpjRFhGzZt48xGtAp7alpzx1Pwn_Ojv8dyrII_xYMzCCHWhMJ3zMdSEgUOqAp_zeEpsjpv3gqFeY5_SkypnlRjQcxEcBXPdODBJ0GL4zR60gc13HOTcyqmkoJPP1f6Nruj7pNAg3itWSyIxstpeFmjrPAgEs_qFLbLCJBAYBAaujcI0WXaDqvfgOMqXZ-6myKBgsxmK5V"/>
+</div>
+<div>
+<h5 class="font-headline font-bold">Elena Rodriguez</h5>
+<p class="text-xs text-on-surface-variant font-label uppercase tracking-wider">Local Resident</p>
+</div>
+</div>
+</div>
+<div class="p-8 rounded-2xl border border-outline-variant relative">
+<p class="text-lg text-on-surface font-medium italic leading-relaxed">
+                                "I love that Harvest Market supports small family farms. Everything feels curated and personal. The bread is still warm when I pick it up!"
+                            </p>
+<div class="mt-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-zinc-200">
+<img class="w-full h-full object-cover" data-alt="Headshot of a middle-aged man with a friendly expression in an outdoor setting with greenery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs92yG281BAEZW4YYbsdtuZ7QEzpsai11Nv_KjLIfUNwvH2wRdMsXUmBNu0yjKBcuVwcnDN-ca1huOO4T9vmtwsL6JV77dVTjmBSTG8PWBiwbUMlKeuE4-jNASE_P3cFdgKn1hDQ3X2J0FeTviFTIcoa9oOYny4LtjMYmfcnfbLioTQ8ZmzgsKvdbaJ3h6x_kSmR8e9OSjc2xqdlVGZXrL3uzgEKgV-5gb1wl4so-4-xLqvHBKwkN5ayE0DYiB7i3DMm8BI7PwzrvH"/>
+</div>
+<div>
+<h5 class="font-headline font-bold">Marcus Chen</h5>
+<p class="text-xs text-on-surface-variant font-label uppercase tracking-wider">Chef &amp; Customer</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-square rounded-3xl overflow-hidden botanical-shadow rotate-3">
+<img class="w-full h-full object-cover" data-alt="Interior of a rustic aesthetic grocery store with organized shelves of fresh produce and warm hanging lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDDKoyNW9ysw27qBoSZ2pTWxdTCu-rh856aCJC1mr5UElpd91VGOCnjnFZCZtH64gwOZ23Z7zHv_ON8wQGyAlaBnYoTen9yGJTktDdOpaxVsN4jJHmuTEU7dJ1Xr8wrOi625sxsf86Dr7FqCTYfsxoxMTlp-v4xJdDFxil_JRHcMol0gRK4LQjsFTBCTpWA5EAprpFV4hU8s_mdoHI2xOgmodoUcUvhXb8GO-l8tMby9fAOOfCPfatqm-5Jd2eFWZ03Cp4fe_rshdR"/>
+</div>
+<div class="absolute -bottom-10 -left-10 w-48 h-48 rounded-2xl overflow-hidden border-8 border-white botanical-shadow -rotate-6">
+<img class="w-full h-full object-cover" data-alt="Crate of freshly harvested green kale and red radishes with dirt still on them" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH_jvjxPGnaMaN5r3pdpeLhxvE9AAa1U7Ua8BFVn8PnAnxJK5m1n6qrbzwntpeXSYp8waTRN4OYekF_oFnVqhYjd5tAj4LJRy1Uy6GDt8srZyMAdf9zRH28RQg14OeOBAI7jSDaN_x-HSPBoeP5-VUnD15IX8x5M-FbNnLqfc9OnbkRgOwF7-XIOpnhLt5n1qRIs2OtksigJ6erS-FX4V2eJPYaBZiyw-75xAARPCW7ydm9oeZNn7Vh2GGBxsibZGk7jFGYHUDGKbk"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-20 border-t border-zinc-200 bg-zinc-100">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 py-12 max-w-7xl mx-auto">
+<div class="space-y-4">
+<p class="font-headline font-black text-emerald-800 text-2xl">Harvest Market</p>
+<p class="text-zinc-500 font-body leading-relaxed text-sm">
+                Reimagining the grocery experience through a lens of sustainability and local craftsmanship.
+            </p>
+</div>
+<div>
+<h6 class="font-label text-xs uppercase tracking-widest text-emerald-900 font-bold mb-6">Explore</h6>
+<ul class="space-y-4 text-xs font-label tracking-widest uppercase">
+<li><a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Shop All</a></li>
+<li><a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Fresh Produce</a></li>
+<li><a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Pantry</a></li>
+<li><a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Bakery</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-label text-xs uppercase tracking-widest text-emerald-900 font-bold mb-6">Community</h6>
+<ul class="space-y-4 text-xs font-label tracking-widest uppercase">
+<li><a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">About Us</a></li>
+<li><a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Sustainability</a></li>
+<li><a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Contact Support</a></li>
+<li><a class="text-zinc-500 hover:text-emerald-600 transition-colors" href="#">Shipping Policy</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-label text-xs uppercase tracking-widest text-emerald-900 font-bold mb-6">Join the Harvest</h6>
+<p class="text-zinc-500 text-sm mb-4">Get seasonal updates and exclusive farmer insights.</p>
+<form class="flex gap-2">
+<input class="bg-white border-none rounded px-4 py-2 text-sm focus:ring-2 focus:ring-primary w-full" placeholder="Email address" type="email"/>
+<button class="bg-primary text-white p-2 rounded hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">send</span>
+</button>
+</form>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 py-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label text-xs uppercase tracking-widest text-zinc-500">© 2024 Harvest Market. Grown with love.</p>
+<div class="flex gap-6">
+<a class="font-label text-xs uppercase tracking-widest text-zinc-500 hover:text-emerald-700" href="#">Privacy</a>
+<a class="font-label text-xs uppercase tracking-widest text-zinc-500 hover:text-emerald-700" href="#">Terms</a>
+</div>
+</div>
+</footer>
+<script>
+    // 1. Mock Data for Search
+    const mockProducts = [
+        { name: "Heirloom Vine Tomatoes", category: "Vegetables", price: "$6.45" },
+        { name: "Wildflower Local Honey", category: "Pantry", price: "$12.99" },
+        { name: "Young Green Asparagus", category: "Vegetables", price: "$4.20" },
+        { name: "Grass-fed Whole Milk", category: "Dairy", price: "$5.50" },
+        { name: "Organic Fuji Apples", category: "Fruit", price: "$3.99" },
+        { name: "Sourdough Artisan Loaf", category: "Bakery", price: "$7.50" },
+        { name: "Heirloom Peaches", category: "Fruit", price: "$4.99" }
+    ];
+
+    // 2. Search Functionality
+    const searchBar = document.getElementById('search-bar');
+    const searchResults = document.getElementById('search-results');
+    const resultsList = document.getElementById('results-list');
+
+    searchBar.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        if (query.length < 2) {
+            searchResults.classList.add('hidden');
+            return;
+        }
+
+        const filtered = mockProducts.filter(p => 
+            p.name.toLowerCase().includes(query) || 
+            p.category.toLowerCase().includes(query)
+        );
+
+        resultsList.innerHTML = '';
+        if (filtered.length > 0) {
+            filtered.forEach(item => {
+                const li = document.createElement('li');
+                li.className = "px-4 py-3 hover:bg-emerald-50 cursor-pointer border-b border-zinc-50 last:border-none flex justify-between items-center";
+                li.innerHTML = `
+                    <div>
+                        <div class="text-sm font-bold text-on-surface">${item.name}</div>
+                        <div class="text-[10px] text-zinc-400 uppercase tracking-tighter">${item.category}</div>
+                    </div>
+                    <div class="text-primary font-bold text-sm">${item.price}</div>
+                `;
+                li.onclick = () => {
+                    searchBar.value = item.name;
+                    searchResults.classList.add('hidden');
+                    // Logic to "go to product" could be here
+                };
+                resultsList.appendChild(li);
+            });
+            searchResults.classList.remove('hidden');
+        } else {
+            resultsList.innerHTML = '<li class="px-4 py-3 text-sm text-zinc-500 italic">No results found</li>';
+            searchResults.classList.remove('hidden');
+        }
+    });
+
+    // Close search when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!searchBar.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.classList.add('hidden');
+        }
+    });
+
+    // 3. Shop Fresh Arrivals Scroll
+    function scrollToArrivals() {
+        const arrivalsSection = document.getElementById('arrivals');
+        arrivalsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 4. Cart Counter Functionality
+    let cartCount = 0;
+    const cartCounterEl = document.getElementById('cart-counter');
+
+    function addToCart(productName) {
+        cartCount++;
+        cartCounterEl.innerText = cartCount;
+        cartCounterEl.classList.remove('hidden');
+        
+        // Visual feedback
+        const notification = document.createElement('div');
+        notification.className = "fixed bottom-8 left-1/2 -translate-x-1/2 bg-primary text-white px-6 py-3 rounded-full shadow-2xl z-50 animate-bounce text-sm font-bold";
+        notification.innerText = `Added ${productName} to cart!`;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 2000);
+    }
+</script>
+</body></html>
